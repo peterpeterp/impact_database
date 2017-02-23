@@ -1,0 +1,30 @@
+
+## Matthias
+
+correct for historical bias
+  anomaly to HadCrut data.
+
+time period belonging to a certain warming level.
+
+## Carl's Notes
+
+* Internal Notes
+** Issues:
+- Treshold in the ensemble size: 10 is an arbitrary number
+
+** Implementation
+*** Rules
+**** More than one scenarios given - derive targets always from the lowest one
+**** For RCP26: Always take the 2080-2100 period
+**** Derive the model ensemble warming bias relative to HadCrut4
+*** ISIMIP
+- Transient CS, mean of 5 ISIMIP-models is 1.88, mean of CMIP5 is 1.8. Use as mean
+
+
+** Literature Check
+*** Isimip
+- had a similar problem
+- picked 5 GCMs with very different ECS
+- showed GCM specific impacts
+- chose GCM specific time slices as outlined Schewe et al. (2013) Tab. S1
+- Carl asked Jacob about our approach, he didn't see major obstacles
