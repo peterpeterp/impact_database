@@ -28,8 +28,14 @@ import glob,os,sys,time
 
 import matplotlib
 matplotlib.use('Agg')
-import matplotlib.pylab as plt 
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
+
+stopwords = set(STOPWORDS)
+stopwords.add("said")
+world_mask=np.array(Image.open("world.png"))
+image_colors = ImageColorGenerator(world_mask)
 
 def flash_errors(form):
     for field, errors in form.errors.items():

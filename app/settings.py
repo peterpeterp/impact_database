@@ -26,8 +26,7 @@
 import os
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+
 
 try:
     import bibtex_reader as bibtex_reader; reload(bibtex_reader)
@@ -48,10 +47,6 @@ thematics=list(filter(lambda x: (x.lower() in ['climate information','impact & v
 types=list(filter(lambda x: (x.lower() in ['peer-reviewd','international institution','ngo','governmental institution']),keywords))
 unsorteds=list(filter(lambda x: (x.lower() not in regions+thematics+types),keywords))
 
-stopwords = set(STOPWORDS)
-stopwords.add("said")
-world_mask=np.array(Image.open("world.png"))
-image_colors = ImageColorGenerator(world_mask)
 
 
 # selected=bib.filter({'keywords':['pacific','caribbean']})
