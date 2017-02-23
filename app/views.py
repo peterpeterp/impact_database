@@ -98,7 +98,7 @@ def choices():
 
   # create a word cloud
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
-  word_count,word_list=settings.bib.check_occurence_of_keyword(selected)
+  word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
   wc = settings.WordCloud(background_color="white", max_words=2000,
                stopwords=settings.stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
   
@@ -154,16 +154,12 @@ def remove_keyword():
       print key
       if key in regions:  
         tmp_region.remove(key)
-        session['regions_available']+=[key]
       if key in thematics:  
         tmp_thematic.remove(key)
-        session['thematics_available']+=[key]
       if key in types:  
         tmp_type.remove(key)
-        session['types_available']+=[key]
       if key in unsorteds:  
         tmp_unsorted.remove(key)
-        session['unsorteds_available']+=[key]
 
     session['regions_chosen'] = tmp_region
     session['thematics_chosen'] = tmp_thematic

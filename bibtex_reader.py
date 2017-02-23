@@ -73,12 +73,13 @@ class bibliography(object):
 
 	def filter(self,filters):
 		to_filter={}
+		possible=range(len(self._articles))
 		selected=range(len(self._articles))
 
 		for key in filters.keys():
 			for accepted in filters[key]:
-				for item in selected:
-					if item not in self._meta[key][accepted]:
+				for item in possible:
+					if (item not in self._meta[key][accepted]) & (item in selected):
 						selected.remove(item)
 				
 		return(selected)
@@ -102,7 +103,7 @@ class bibliography(object):
 			word_count.append((key,freq_dict[key]))
 			#word_count.append((key,float(freq_dict[key])/len(tmp)))
 
-		return word_count,tmp
+		return word_count,tmp,freq_dict
 
 
 
