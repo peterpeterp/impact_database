@@ -45,7 +45,7 @@ unsorteds  = sorted([x.lower() for x in settings.unsorteds])
 
 @app.route('/')
 def index():
-
+  session['id'] = str(time.time())
   session['regions_chosen']   = []
   session['selected_keywords']= []
   session['regions_chosen']   = []
@@ -113,7 +113,7 @@ def choices():
 
   # display selected article summary
   backup=open('app/templates/choices_backup.html','r').read()
-  new=open('app/templates/choices.html','w')
+  new=open('app/templates/choices'+session['id']+'.html','w')
   new.write(backup)
   
   # new.write('<div class="span4">\n<IMG SRC="static/images/keywords.png?'+str(int(round(time.time())))+'" ALT="some asdatext" WIDTH=500 HEIGHT=400>\n</div>\n')#WIDTH=1000 HEIGHT=1000
@@ -138,7 +138,7 @@ def choices():
   new.write('\n</div>\n{% endblock %}')
   new.close()
 
-  return render_template('choices.html',form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
+  return render_template('choices'+session['id']+'.html',form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
 
 
 @app.route('/remove_keyword',  methods=("POST", ))
