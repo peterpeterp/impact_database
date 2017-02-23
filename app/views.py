@@ -47,12 +47,6 @@ unsorteds  = sorted([x.lower() for x in settings.unsorteds])
 
 @app.route('/')
 def index():
-
-  if len(glob.glob('app/templates/choices*'))>10:
-    print 'rm app/templates/choices*'
-    os.system('rm app/templates/choices*')
-
-  session['id'] = str(time.time())
   session['regions_chosen']   = []
   session['selected_keywords']= []
   session['regions_chosen']   = []
@@ -105,12 +99,13 @@ def choices():
 
   # create a word cloud
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
-  word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
-  wc = settings.WordCloud(background_color="white", max_words=2000,
-               stopwords=settings.stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
   
+  # word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
+  # wc = settings.WordCloud(background_color="white", max_words=2000,
+  #              stopwords=settings.stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
+
   # wc.generate_from_frequencies(word_count)
-  wc.generate(' '.join(word_list))
+  # wc.generate(' '.join(word_list))
 
   # fig = plt.figure(figsize=(20,10))
   # #plt.imshow(wc.recolor(color_func= settings.image_colors))
@@ -118,34 +113,16 @@ def choices():
   # plt.axis('off')
   # plt.savefig('app/static/images/keywords.png')
 
-  # display selected article summary
-  backup=open('app/templates/backup_choices.html','r').read()
-  new=open('app/templates/choices'+session['id']+'.html','w')
-  new.write(backup)
-  
   # new.write('<div class="span4">\n<IMG SRC="static/images/keywords.png?'+str(int(round(time.time())))+'" ALT="some asdatext" WIDTH=500 HEIGHT=400>\n</div>\n')#WIDTH=1000 HEIGHT=1000
 
 
 
-  new.write('\n<div class="span7">')
+  list_=[]
   for i in selected:
-    item=settings.bib._articles[i]
-    # tmp=open('tmp/tmp.bib','w')
-    # tmp.write(settings.bib._articles[i].description)
-    # tmp.close()
-    # os.system('pybtex-format tmp/tmp.bib tmp/tmp.html')
-    # tmp=open('tmp/tmp.html','r').read()
-    # new.write('\n'+tmp)
+    list_.append(settings.bib._articles[i])
 
-    new.write('\n<div><dd>'+item.author+'<br> <span class="bibtex-protected">'+item.title+'</span>')
-    new.write('\n<em>'+item.publisher+'</em>')
-    new.write('<br>URL: <a href="'+item.url+'" >'+item.url+'</a></div>')
-    new.write('\n<div> <br></div>')
-
-  new.write('\n</div>\n{% endblock %}')
-  new.close()
-
-  return render_template('choices'+session['id']+'.html',form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
+  selected=['test','terere']
+  return render_template('fixed_choices.html',selected=list_,choice_text=choice_text,form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
 
 
 @app.route('/remove_keyword',  methods=("POST", ))
