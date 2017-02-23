@@ -43,8 +43,15 @@ thematics = sorted([x.lower() for x in settings.thematics])
 types  = sorted([x.lower() for x in settings.types])
 unsorteds  = sorted([x.lower() for x in settings.unsorteds])
 
+
+
 @app.route('/')
 def index():
+
+  if len(glob.glob('app/templates/choices*'))>10:
+    print 'rm app/templates/choices*'
+    os.system('rm app/templates/choices*')
+
   session['id'] = str(time.time())
   session['regions_chosen']   = []
   session['selected_keywords']= []
@@ -112,7 +119,7 @@ def choices():
   # plt.savefig('app/static/images/keywords.png')
 
   # display selected article summary
-  backup=open('app/templates/choices_backup.html','r').read()
+  backup=open('app/templates/backup_choices.html','r').read()
   new=open('app/templates/choices'+session['id']+'.html','w')
   new.write(backup)
   
