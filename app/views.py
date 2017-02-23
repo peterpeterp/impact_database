@@ -121,8 +121,7 @@ def choices():
   for i in selected:
     list_.append(settings.bib._articles[i])
 
-  selected=['test','terere']
-  return render_template('fixed_choices.html',selected=list_,choice_text=choice_text,form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
+  return render_template('fixed_choices.html',selected=list_,form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
 
 
 @app.route('/remove_keyword',  methods=("POST", ))
