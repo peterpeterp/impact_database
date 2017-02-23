@@ -111,8 +111,8 @@ def choices():
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
   
   word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
-  wc = settings.WordCloud(background_color="white", max_words=2000,
-               stopwords=settings.stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
+  wc = WordCloud(background_color="white", max_words=2000,
+               stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
 
   # wc.generate_from_frequencies(word_count)
   wc.generate(' '.join(word_list))
