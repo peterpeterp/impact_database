@@ -1,0 +1,600 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+
+<!-- REGIONS -->
+
+<div class="span3.5">
+
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_region">
+      {{ form_region.hidden_tag() }}
+      {{ form_region.regions.label }} {{ form_region.regions(rows=10, multiple=True, size=5) }}
+    </div>
+  
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_thematic">
+      {{ form_thematic.hidden_tag() }}
+      {{ form_thematic.thematics.label }} {{ form_thematic.thematics(rows=10, multiple=True, size=5) }}
+    </div>
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>  
+  </div>  
+
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_type">
+      {{ form_type.hidden_tag() }}
+      {{ form_type.types.label }} {{ form_type.types(rows=10, multiple=True, size=5) }}
+    </div>
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>  
+  </div>  
+
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_unsorted">
+      {{ form_unsorted.hidden_tag() }}
+      {{ form_unsorted.unsorteds.label }} {{ form_unsorted.unsorteds(rows=10, multiple=True, size=10) }}
+    </div>
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>  
+  </div>  
+
+</div>
+
+
+<div class="span3.5">
+    <form method="POST" action="/remove_keyword">
+    {{ form_selected.hidden_tag() }}
+    {{ form_selected.selected.label }} {{ form_selected.selected(rows=10, multiple=True, size=37) }}
+    <br>
+    <button type="submit" class="btn">Remove Keyword</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+<div class="span7">
+<div><dd>Na<br> <span class="bibtex-protected">Na</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>(IFPRI) International Food Policy Research Institute<br> <span class="bibtex-protected">Atlas of african agriculture research and development [Preview]: Revealing agriculture's place in Africa</span>
+<em>International Food Policy Research Institute</em><br>URL: <a href="http://ebrary.ifpri.org/cdm/ref/collection/p15738coll2/id/127817" >http://ebrary.ifpri.org/cdm/ref/collection/p15738coll2/id/127817</a></div>
+<div> <br></div>
+<div><dd>ADB<br> <span class="bibtex-protected">The economics of climate change in the Pacific</span>
+<em>Asian Development Bank</em><br>URL: <a href="http://www.adb.org/sites/default/files/pub/2013/economics-climate-change-pacific.pdf" >http://www.adb.org/sites/default/files/pub/2013/economics-climate-change-pacific.pdf</a></div>
+<div> <br></div>
+<div><dd>Adeniyi Mojisola O.<br> <span class="bibtex-protected">The consequences of the IPCC AR5 RCPs 4.5 and 8.5 climate change scenarios on precipitation in West Africa</span>
+<em>Springer Netherlands</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10584-016-1774-2" >http://link.springer.com/article/10.1007/s10584-016-1774-2</a></div>
+<div> <br></div>
+<div><dd>Africa Parcc West and Jones Richard and Hartley Andrew and Mcsweeney Carol<br> <span class="bibtex-protected">Protected Areas Resilient to Climate Change  2012 Deriving high resolution climate data for West Africa for the period 1950-2100</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>African Development Bank<br> <span class="bibtex-protected">The cost of adaptation to climate change in Africa</span>
+<em>Na</em><br>URL: <a href="http://www.afdb.org/fileadmin/uploads/afdb/Documents/Project-and-Operations/Cost of Adaptation in Africa.pdf" >http://www.afdb.org/fileadmin/uploads/afdb/Documents/Project-and-Operations/Cost of Adaptation in Africa.pdf</a></div>
+<div> <br></div>
+<div><dd>Ahmed Kazi Farzan and Wang Guiling and You Liangzhi and Yu Miao<br> <span class="bibtex-protected">Potential impact of climate and socioeconomic changes on future agricultural land use in West Africa</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Ahmed Kazi Farzan and Wang Guiling and Yu Miao and Koo Jawoo and You Liangzhi<br> <span class="bibtex-protected">Potential impact of climate change on cereal crop yield in West Africa</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Albert Simon and Leon Javier X and Grinham Alistair R and Church John A and Gibbes Badin R and Woodroffe Colin D<br> <span class="bibtex-protected">Interactions between sea-level rise and wave exposure on reef island dynamics in the Solomon Islands</span>
+<em>Na</em><br>URL: <a href="http://stacks.iop.org/1748-9326/11/i" >http://stacks.iop.org/1748-9326/11/i</a></div>
+<div> <br></div>
+<div><dd>Allen Matthew G<br> <span class="bibtex-protected">Framing food security in the Pacific Islands: empirical evidence from an island in the Western Pacific</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-014-0734-5" >http://link.springer.com/article/10.1007/s10113-014-0734-5</a></div>
+<div> <br></div>
+<div><dd>Anderson Malcolm G. and Holcombe Elizabeth and Blake James R. and Ghesquire Francis and Holm-Nielsen Niels and Fisseha Tiguist<br> <span class="bibtex-protected">Reducing landslide risk in communities: Evidence from the Eastern Caribbean</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Andrewin Aisha N. and Rodriguez-Llanes Jose M. and Guha-Sapir Debarati<br> <span class="bibtex-protected">Determinants of the lethality of climate-related disasters in the Caribbean Community (CARICOM): a cross-country analysis</span>
+<em>Nature Publishing Group</em><br>URL: <a href="http://www.nature.com/articles/srep11972" >http://www.nature.com/articles/srep11972</a></div>
+<div> <br></div>
+<div><dd>Antwi-Agyei Philip and Quinn Claire Helen and Adiku Samuel Godfried Kwasi and Codjoe Samuel Nii Ardey and Dougill Andrew John and Lamboll Richard and Dovie Delali Benjamin Komla<br> <span class="bibtex-protected">Perceived stressors of climate vulnerability across scales in the Savannah zone of Ghana: a participatory approach</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-0993-4" >http://link.springer.com/article/10.1007/s10113-016-0993-4</a></div>
+<div> <br></div>
+<div><dd>Australian Bureau of Meteorology and Commonwealth Scientific and Industrial Research Organisation (CSIRO)<br> <span class="bibtex-protected">Climate Change in the Pacific : Scientific Assessment and New Research Volume 1 : Regional Overview</span>
+<em>Australian Government and Australian Aid</em><br>URL: <a href="http://www.pacificclimatechangescience.org/wp-content/uploads/2013/08/Climate-Change-in-the-Pacific.-Scientific-Assessment-and-New-Research-Volume-1.-Regional-Overview.pdf" >http://www.pacificclimatechangescience.org/wp-content/uploads/2013/08/Climate-Change-in-the-Pacific.-Scientific-Assessment-and-New-Research-Volume-1.-Regional-Overview.pdf</a></div>
+<div> <br></div>
+<div><dd>Ayanlade Ayansina and Radeny Maren and Morton John F.<br> <span class="bibtex-protected">Comparing smallholder farmers' perception of climate change with meteorological data: A case study from southwestern Nigeria</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S2212094716300755" >http://linkinghub.elsevier.com/retrieve/pii/S2212094716300755</a></div>
+<div> <br></div>
+<div><dd>Barange M. and Merino G. and Blanchard J. L. and Scholtens J. and Harle J. and Allison E. H. and Allen J. I. and Holt J. and Jennings S.<br> <span class="bibtex-protected">Impacts of climate change on marine ecosystem production in societies dependent on fisheries</span>
+<em>Nature Research</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2119" >http://www.nature.com/doifinder/10.1038/nclimate2119</a></div>
+<div> <br></div>
+<div><dd>Barnett Jon and O'Neill Saffron J.<br> <span class="bibtex-protected">Islands resettlement and adaptation</span>
+<em>Na</em><br>URL: <a href="http://dx.doi.org/10.1038/nclimate1334" >http://dx.doi.org/10.1038/nclimate1334</a></div>
+<div> <br></div>
+<div><dd>Belhabib Dyhia and Lam Vicky W.Y. and Cheung William W.L.<br> <span class="bibtex-protected">Overview of West African fisheries under climate change: Impacts vulnerabilities and adaptive responses of the artisanal and industrial sectors</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Bell Johann D. and Ganachaud Alexandre and Gehrke Peter C. and Griffiths Shane P. and Hobday Alistair J. and Hoegh-Guldberg Ove and Johnson Johanna E. and Le Borgne Robert and Lehodey Patrick and Lough Janice M. and Matear Richard J. and Pickering Timothy D. and Pratchett Morgan S. and Gupta Alex Sen and Senina Inna and Waycott Michelle<br> <span class="bibtex-protected">Mixed responses of tropical Pacific fisheries and aquaculture to climate change</span>
+<em>Nature Research</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate1838" >http://www.nature.com/doifinder/10.1038/nclimate1838</a></div>
+<div> <br></div>
+<div><dd>Bell Johann D. and Reid Chris and Batty Michael J. and Lehodey Patrick and Rodwell Len and Hobday Alistair J. and Johnson Johanna E. and Demmke Andreas<br> <span class="bibtex-protected">Effects of climate change on oceanic fisheries in the tropical Pacific: implications for economic development and food security</span>
+<em>Springer Netherlands</em><br>URL: <a href="http://link.springer.com/10.1007/s10584-012-0606-2" >http://link.springer.com/10.1007/s10584-012-0606-2</a></div>
+<div> <br></div>
+<div><dd>Bellard C\'eline and Leclerc Camille and Courchamp Franck<br> <span class="bibtex-protected">Impact of sea level rise on the 10 insular biodiversity hotspots</span>
+<em>Na</em><br>URL: <a href="http://doi.wiley.com/10.1111/geb.12093" >http://doi.wiley.com/10.1111/geb.12093</a></div>
+<div> <br></div>
+<div><dd>Bennett Kelly Louise and Shija Fortunate and Linton Yvonne Marie and Misinzo Gerald and Kaddumukasa Martha and Djouaka Rousseau and Anyaele Okorie and Harris Angela and Irish Seth and Hlaing Thaung and Prakash Anil and Lutwama Julius and Walton Catherine<br> <span class="bibtex-protected">Historical environmental change in Africa drives divergence and admixture of Aedes aegypti mosquitoes: a precursor to successful worldwide colonization?</span>
+<em>Na</em><br>URL: <a href="http://onlinelibrary.wiley.com/doi/10.1111/mec.13762/full" >http://onlinelibrary.wiley.com/doi/10.1111/mec.13762/full</a></div>
+<div> <br></div>
+<div><dd>Bizikova Livia and Parry Jo Ellen and Karami Julie and Echeverria Daniella<br> <span class="bibtex-protected">Review of key initiatives and approaches to adaptation planning at the national level in semi-arid areas</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-014-0710-0" >http://link.springer.com/article/10.1007/s10113-014-0710-0</a></div>
+<div> <br></div>
+<div><dd>Bosello F and Campagnolo L and Eboli F<br> <span class="bibtex-protected">Climate Change and Adaptation: The Case of Nigerian Agriculture</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Bren d'Amour Christopher and Wenz Leonie and Kalkuhl Matthias and Christoph Steckel Jan and Creutzig Felix<br> <span class="bibtex-protected">Teleconnected food supply shocks</span>
+<em>IOP Publishing</em><br>URL: <a href="http://stacks.iop.org/1748-9326/11/i" >http://stacks.iop.org/1748-9326/11/i</a></div>
+<div> <br></div>
+<div><dd>Brown P and Daigneault A and Gawith D and Brown P and Daigneault A and Gawith D<br> <span class="bibtex-protected">Climate change and the economic impacts of flooding on Fiji</span>
+<em>Taylor \\&\ Francis</em><br>URL: <a href="http://dx.doi.org/10.1080/17565529.2016.1174656" >http://dx.doi.org/10.1080/17565529.2016.1174656</a></div>
+<div> <br></div>
+<div><dd>Burke Marshall B. and Lobell David B. and Guarino Luigi<br> <span class="bibtex-protected">Shifts in African crop climates by 2050 and the implications for crop improvement and genetic resources conservation</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S0959378009000351" >http://linkinghub.elsevier.com/retrieve/pii/S0959378009000351</a></div>
+<div> <br></div>
+<div><dd>Campbell John Richard<br> <span class="bibtex-protected">Development global change and traditional food security in Pacific Island countries</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-014-0697-6" >http://link.springer.com/article/10.1007/s10113-014-0697-6</a></div>
+<div> <br></div>
+<div><dd>Cashman a. and Nurse L. and John C.<br> <span class="bibtex-protected">Climate Change in the Caribbean: The Water Management Implications</span>
+<em>Na</em><br>URL: <a href="http://jed.sagepub.com/content/early/2009/11/19/1070496509347088.abstract" >http://jed.sagepub.com/content/early/2009/11/19/1070496509347088.abstract</a></div>
+<div> <br></div>
+<div><dd>Cervigni Raffaello and Liden Rikard and Neumann James and Strzepek Kenneth<br> <span class="bibtex-protected">Enhancing the Climate Resilience of Africa's Infrastructure: The power and water sectors</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Cheung William W L and Reygondeau Gabriel and Fr\"olicher Thomas L.<br> <span class="bibtex-protected">Large benefits to marine fisheries of meeting the 1.5°C global warming target</span>
+<em>Na</em><br>URL: <a href="http://www.sciencemag.org/lookup/doi/10.1126/science.aag2331" >http://www.sciencemag.org/lookup/doi/10.1126/science.aag2331</a></div>
+<div> <br></div>
+<div><dd>Cinner Joshua Eli and Pratchett Morgan Stuart and Graham Nicholas Anthony James and Messmer Vanessa and Fuentes Mariana Menezes Prata Bezerra and Ainsworth Tracy and Ban Natalie and Bay Line Kolind and Blythe Jessica and Dissard Delphine and Dunn Simon and Evans Louisa and Fabinyi Michael and Fidelman Pedro and Figueiredo Joana and Frisch Ashley John and Fulton Christopher John and Hicks Christina Chemtai and Lukoschek Vimoksalehi and Mallela Jennie and Moya Aurelie and Penin Lucie and Rummer Jodie Lynn and Walker Stefan and Williamson David Hall<br> <span class="bibtex-protected">A framework for understanding climate change impacts on coral reef social–ecological systems</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/10.1007/s10113-015-0832-z" >http://link.springer.com/10.1007/s10113-015-0832-z</a></div>
+<div> <br></div>
+<div><dd>Climate Service Center Germany<br> <span class="bibtex-protected">Climate-Fact-Sheet Niger</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Climate Service Center Germany<br> <span class="bibtex-protected">Climate-Fact-Sheet Benin Ghana Togo</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Climate Service Center Germany<br> <span class="bibtex-protected">Climate-Fact-Sheet Nigeria</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Climate Service Center Germany<br> <span class="bibtex-protected">Climate-Fact-Sheet Mauritania</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Climate Service Center Germany<br> <span class="bibtex-protected">Climate-Fact-Sheet Ivory Coast</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Climate Service Center Germany<br> <span class="bibtex-protected">Climate-Fact-Sheet Burkina Faso Mali</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Climate Service Center Germany<br> <span class="bibtex-protected">Climate-Fact-Sheet Senegal</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Connell John<br> <span class="bibtex-protected">Food security in the island Pacific: Is Micronesia as far away as ever?</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-014-0696-7" >http://link.springer.com/article/10.1007/s10113-014-0696-7</a></div>
+<div> <br></div>
+<div><dd>Connolly-Boutin Liette and Smit Barry<br> <span class="bibtex-protected">Climate change food security and livelihoods in sub-Saharan Africa</span>
+<em>Na</em><br>URL: <a href="http://link.springer.com/10.1007/s10113-015-0761-x" >http://link.springer.com/10.1007/s10113-015-0761-x</a></div>
+<div> <br></div>
+<div><dd>Conway Declan<br> <span class="bibtex-protected">Adapting climate research for development in Africa</span>
+<em>Na</em><br>URL: <a href="http://doi.wiley.com/10.1002/wcc.115" >http://doi.wiley.com/10.1002/wcc.115</a></div>
+<div> <br></div>
+<div><dd>D\'equ\'e Michel and Calmanti Sandro and Christensen Ole B\ossing and Dell Aquila Alessandro and Maule Cathrine Fox and Haensler Andreas and Nikulin Grigory and Teichmann Claas<br> <span class="bibtex-protected">A multi-model climate response over tropical Africa at +2°C</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S240588071630005X" >http://linkinghub.elsevier.com/retrieve/pii/S240588071630005X</a></div>
+<div> <br></div>
+<div><dd>Descheemaeker Katrien and Oosting Simon J. and Homann-Kee Tui Sabine and Masikati Patricia and Falconnier Gatien N. and Giller Ken E.<br> <span class="bibtex-protected">Climate change adaptation and mitigation in smallholder crop???livestock systems in sub-Saharan Africa: a call for integrated impact assessments</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-0957-8" >http://link.springer.com/article/10.1007/s10113-016-0957-8</a></div>
+<div> <br></div>
+<div><dd>Diallo Isma??la and Giorgi Filippo and Deme Abdoulaye and Tall Moustapha and Mariotti Laura and Gaye Amadou T.<br> <span class="bibtex-protected">Projected changes of summer monsoon extremes and hydroclimatic regimes over West Africa for the twenty-first century</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Diallo Isma??la and Giorgi Filippo and Deme Abdoulaye and Tall Moustapha and Mariotti Laura and Gaye Amadou T.<br> <span class="bibtex-protected">Projected changes of summer monsoon extremes and hydroclimatic regimes over West Africa for the twenty-first century</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Doczi Julian and Ross Ian<br> <span class="bibtex-protected">The economics of climate change adaptation in Africa' s water sector: A review and way forward</span>
+<em>Na</em><br>URL: <a href="http://www.odi.org/sites/odi.org.uk/files/odi-assets/publications-opinion-files/8852.pdf" >http://www.odi.org/sites/odi.org.uk/files/odi-assets/publications-opinion-files/8852.pdf</a></div>
+<div> <br></div>
+<div><dd>Doumbia Seydou and Jalloh Abdulai and Diouf Aliou<br> <span class="bibtex-protected">Review of research and policies for climate change adaptation in the health sector in West Africa</span>
+<em>Na</em><br>URL: <a href="http://www.future-agricultures.org/publications/research-and-analysis/working-papers/1870-review-of-research-and-policies-for-climate-change-adaptation-in-the-health-sector-in-west-africa/file" >http://www.future-agricultures.org/publications/research-and-analysis/working-papers/1870-review-of-research-and-policies-for-climate-change-adaptation-in-the-health-sector-in-west-africa/file</a></div>
+<div> <br></div>
+<div><dd>Douxchamps Sabine and Van Wijk Mark T. and Silvestri Silvia and Moussa Abdoulaye S. and Quiros Carlos and Ndour Nd\`eye Yacine B and Buah Saaka and Som\'e L\'eopold and Herrero Mario and Kristjanson Patricia and Ouedraogo Mathieu and Thornton Philip K. and Van Asten Piet and Zougmor\'e Robert and Rufino Mariana C.<br> <span class="bibtex-protected">Linking agricultural adaptation strategies food security and vulnerability: evidence from West Africa</span>
+<em>Na</em><br>URL: <a href="http://link.springer.com/10.1007/s10113-015-0838-6" >http://link.springer.com/10.1007/s10113-015-0838-6</a></div>
+<div> <br></div>
+<div><dd>Dumaru Patrina<br> <span class="bibtex-protected">Community-based adaptation: enhancing community adaptive capacity in Druadrua Island Fiji</span>
+<em>John Wiley \& Sons Inc.</em><br>URL: <a href="http://doi.wiley.com/10.1002/wcc.65" >http://doi.wiley.com/10.1002/wcc.65</a></div>
+<div> <br></div>
+<div><dd>Duvat Virginie<br> <span class="bibtex-protected">Coastal protection structures in Tarawa Atoll Republic of Kiribati</span>
+<em>Na</em><br>URL: <a href="http://library.witpress.com/viewpaper.asp?pcode" >http://library.witpress.com/viewpaper.asp?pcode</a></div>
+<div> <br></div>
+<div><dd>Farbotko Carol and Lazrus Heather<br> <span class="bibtex-protected">The first climate refugees? Contesting global narratives of climate change in Tuvalu</span>
+<em>Elsevier Ltd</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S0959378011002019" >http://linkinghub.elsevier.com/retrieve/pii/S0959378011002019</a></div>
+<div> <br></div>
+<div><dd>Filho Walter Leal<br> <span class="bibtex-protected">Climate Change Adaptation in Pacific Countries</span>
+<em>Springer</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Ford James D. and Berrang-Ford Lea and Bunce Anna and McKay Courtney and Irwin Maya and Pearce Tristan<br> <span class="bibtex-protected">The status of climate change adaptation in Africa and Asia</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-014-0648-2" >http://link.springer.com/article/10.1007/s10113-014-0648-2</a></div>
+<div> <br></div>
+<div><dd>Game Edward T. and Lipsett-Moore Geoffrey and Hamilton Richard and Peterson Nate and Kereseka Jimmy and Atu William and Watts Matthew and Possingham Hugh<br> <span class="bibtex-protected">Informed opportunism for conservation planning in the Solomon Islands</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Gan T. Y. and Ito Mari and Huelsmann S and Qin X and Lu X and Liong S. Y and Rutschman P and Disse M and Koivosalo H<br> <span class="bibtex-protected">Possible climate change/variability and human impacts vulnerability of African drought prone regions its water resources and capacity building</span>
+<em>Na</em><br>URL: <a href="http://www.tandfonline.com/doi/full/10.1080/02626667.2015.1057143" >http://www.tandfonline.com/doi/full/10.1080/02626667.2015.1057143</a></div>
+<div> <br></div>
+<div><dd>Ganachaud Alexandre and Sen Gupta Alexander and Brown Jaclyn N. and Evans Karen and Maes Christophe and Muir Les C. and Graham Felicity S.<br> <span class="bibtex-protected">Projected changes in the tropical Pacific Ocean of importance to tuna fisheries</span>
+<em>Springer Netherlands</em><br>URL: <a href="http://link.springer.com/10.1007/s10584-012-0631-1" >http://link.springer.com/10.1007/s10584-012-0631-1</a></div>
+<div> <br></div>
+<div><dd>Garc\'ia de Jal\'on Silvestre and Silvestri Silvia and Barnes Andrew P.<br> <span class="bibtex-protected">The potential for adoption of climate smart agricultural practices in Sub-Saharan livestock systems</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-1026-z" >http://link.springer.com/article/10.1007/s10113-016-1026-z</a></div>
+<div> <br></div>
+<div><dd>Gaston Sangare and Dahiratou Ibrahim Doka and Moussa Barrage and Dougbedji Fatondji<br> <span class="bibtex-protected">Contribution of previous legumes to soil fertility and millet yields in West African Sahel</span>
+<em>Na</em><br>URL: <a href="http://academicjournals.org/journal/AJAR/article-abstract/191C44359403" >http://academicjournals.org/journal/AJAR/article-abstract/191C44359403</a></div>
+<div> <br></div>
+<div><dd>Gbobaniyi Emiola and Sarr Abdoulaye and Sylla Mouhamadou Bamba and Diallo Ismaila and Lennard Chris and Dosio Alessandro and Dhi\'ediou Arona and Kamga Andre and Klutse Nana Ama Browne and Hewitson Bruce and Nikulin Grigory and Lamptey Benjamin<br> <span class="bibtex-protected">Climatology annual cycle and interannual variability of precipitation and temperature in CORDEX simulations over West Africa</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Graham Nicholas A. J. and Jennings Simon and MacNeil M. Aaron and Mouillot David and Wilson Shaun K.<br> <span class="bibtex-protected">Predicting climate-driven regime shifts versus rebound potential in coral reefs</span>
+<em>Nature Research</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nature14140" >http://www.nature.com/doifinder/10.1038/nature14140</a></div>
+<div> <br></div>
+<div><dd>Grasso Marco and Moneo Marta and Arena Marco<br> <span class="bibtex-protected">Assessing social vulnerability to climate change in Samoa</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-013-0570-z" >http://link.springer.com/article/10.1007/s10113-013-0570-z</a></div>
+<div> <br></div>
+<div><dd>Guan Kaiyu and Sultan Benjamin and Biasutti Michela and Baron Christian and Lobell David B.<br> <span class="bibtex-protected">Assessing climate adaptation options and uncertainties for cereal systems in West Africa</span>
+<em>Na</em><br>URL: <a href="http://www.sciencedirect.com/science/article/pii/S0168192316303471" >http://www.sciencedirect.com/science/article/pii/S0168192316303471</a></div>
+<div> <br></div>
+<div><dd>Guan Kaiyu and Sultan Benjamin and Biasutti Michela and Baron Christian and Lobell David B.<br> <span class="bibtex-protected">What aspects of future rainfall changes matter for crop yields in West Africa?</span>
+<em>Na</em><br>URL: <a href="http://onlinelibrary.wiley.com/doi/10.1002/2015GL063877/full" >http://onlinelibrary.wiley.com/doi/10.1002/2015GL063877/full</a></div>
+<div> <br></div>
+<div><dd>Harrison D. E. and Carson Mark<br> <span class="bibtex-protected">Recent sea level and upper ocean temperature variability and trends; cook islands regional results and perspective</span>
+<em>Springer Netherlands</em><br>URL: <a href="http://link.springer.com/10.1007/s10584-012-0580-8" >http://link.springer.com/10.1007/s10584-012-0580-8</a></div>
+<div> <br></div>
+<div><dd>Hern\'andez-Delgado E.A.<br> <span class="bibtex-protected">The emerging threats of climate change on tropical coastal ecosystem services public health local economies and livelihood sustainability of small islands: Cumulative impacts and synergies</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S0025326X15300357" >http://linkinghub.elsevier.com/retrieve/pii/S0025326X15300357</a></div>
+<div> <br></div>
+<div><dd>Himmelstein J. and Ares A. and Gallagher D. and Myers J.<br> <span class="bibtex-protected">A meta-analysis of intercropping in Africa: impacts on crop yield farmer income and integrated pest management effects</span>
+<em>Taylor \\&\ Francis</em><br>URL: <a href="https://www.tandfonline.com/doi/full/10.1080/14735903.2016.1242332" >https://www.tandfonline.com/doi/full/10.1080/14735903.2016.1242332</a></div>
+<div> <br></div>
+<div><dd>Holding S. and Allen D. M. and Foster S. and Hsieh A. and Larocque I. and Klassen J. and Van Pelt S. C.<br> <span class="bibtex-protected">Groundwater vulnerability on small islands</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate3128" >http://www.nature.com/doifinder/10.1038/nclimate3128</a></div>
+<div> <br></div>
+<div><dd>Holding Shannon and Allen Diana M<br> <span class="bibtex-protected">Risk to water security for small islands: an assessment framework and application</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0794-1" >http://link.springer.com/article/10.1007/s10113-015-0794-1</a></div>
+<div> <br></div>
+<div><dd>Holding Shannon and Allen Diana M.<br> <span class="bibtex-protected">Risk to water security for small islands: an assessment framework and application</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0794-1" >http://link.springer.com/article/10.1007/s10113-015-0794-1</a></div>
+<div> <br></div>
+<div><dd>Ifejika Speranza Chinwe<br> <span class="bibtex-protected">Buffer capacity: Capturing a dimension of resilience to climate change in African smallholder agriculture</span>
+<em>Springer-Verlag</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-012-0391-5" >http://link.springer.com/article/10.1007/s10113-012-0391-5</a></div>
+<div> <br></div>
+<div><dd>Jackson Jeremy and Donovan Mary and Cramer Katie and Lam Vivian<br> <span class="bibtex-protected">Status and Trends of Caribbean Coral Reefs: 1970-2012</span>
+<em>Na</em><br>URL: <a href="https://sustainabledevelopment.un.org/content/documents/1891-Status and Trends of Caribbean Coral Reefs- 1970-2012-2014Caribbean Coral Reefs - Status Report 1970-2012 (1).pdf" >https://sustainabledevelopment.un.org/content/documents/1891-Status and Trends of Caribbean Coral Reefs- 1970-2012-2014Caribbean Coral Reefs - Status Report 1970-2012 (1).pdf</a></div>
+<div> <br></div>
+<div><dd>Joseph Debra D<br> <span class="bibtex-protected">Social work models for climate adaptation: the case of small islands in the Caribbean</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-017-1114-8" >http://link.springer.com/article/10.1007/s10113-017-1114-8</a></div>
+<div> <br></div>
+<div><dd>Karnauskas Kristopher B and Donnelly Jeffrey P and Anchukaitis Kevin J<br> <span class="bibtex-protected">Future freshwater stress for island populations</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2987" >http://www.nature.com/doifinder/10.1038/nclimate2987</a></div>
+<div> <br></div>
+<div><dd>Katikiro Robert E. and Macusi Edison D.<br> <span class="bibtex-protected">Impacts of Climate Change on West African Fisheries and its Implications on Food Production</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Keener Victoria W and Marra John J and Finucane Melissa L and Spooner Deanna and Smith Margaret H<br> <span class="bibtex-protected">Climate Change and Pacific Islands : Indicators and Impacts</span>
+<em>Na</em><br>URL: <a href="http://www.cakex.org/sites/default/files/documents/NCA-PIRCA-FINAL-int-print-1.13-web.form\_.pdf" >http://www.cakex.org/sites/default/files/documents/NCA-PIRCA-FINAL-int-print-1.13-web.form\_.pdf</a></div>
+<div> <br></div>
+<div><dd>Khan Ahmed<br> <span class="bibtex-protected">W. G. Ganpat and W.-A. P. Isaac (eds): Impacts of Climate Change on Food Security in Small Island Developing States</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0836-8" >http://link.springer.com/article/10.1007/s10113-015-0836-8</a></div>
+<div> <br></div>
+<div><dd>Kumar Lalit and Taylor Subhashni<br> <span class="bibtex-protected">Exposure of coastal built assets in the South Pacific to climate risks</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2702" >http://www.nature.com/doifinder/10.1038/nclimate2702</a></div>
+<div> <br></div>
+<div><dd>Lam Vicky W. Y. and Cheung William W. L. and Reygondeau Gabriel and Sumaila U. Rashid<br> <span class="bibtex-protected">Projected change in global fisheries revenues under climate change</span>
+<em>Nature Publishing Group</em><br>URL: <a href="http://www.nature.com/articles/srep32607" >http://www.nature.com/articles/srep32607</a></div>
+<div> <br></div>
+<div><dd>Laroche Dupraz C. and Postolle A.<br> <span class="bibtex-protected">Food sovereignty and agricultural trade policy commitments: How much leeway do West African nations have?</span>
+<em>Na</em><br>URL: <a href="http://www.sciencedirect.com/science/article/pii/S0306919212001194" >http://www.sciencedirect.com/science/article/pii/S0306919212001194</a></div>
+<div> <br></div>
+<div><dd>Lashley Jonathan G and Warner Koko<br> <span class="bibtex-protected">Evidence of demand for microinsurance for coping and adaptation to weather extremes in the Caribbean</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Lobell David B. and B\"anziger Marianne and Magorokosho Cosmos and Vivek Bindiganavile<br> <span class="bibtex-protected">Nonlinear heat effects on African maize as evidenced by historical yield trials</span>
+<em>Nature Publishing Group</em><br>URL: <a href="http://dx.doi.org/10.1038/nclimate1043" >http://dx.doi.org/10.1038/nclimate1043</a></div>
+<div> <br></div>
+<div><dd>Lowitt Kristen and Hickey Gordon M and Saint Ville Arlette and Raeburn Kaywana and Thompson-Col\'on Theresa and Laszlo Sonia and Phillip Leroy E<br> <span class="bibtex-protected">Factors affecting the innovation potential of smallholder farmers in the Caribbean Community</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0805-2" >http://link.springer.com/article/10.1007/s10113-015-0805-2</a></div>
+<div> <br></div>
+<div><dd>M??ller Christoph and Waha Katharina and Bondeau Alberte and Heinke Jens<br> <span class="bibtex-protected">Hotspots of climate change impacts in sub-Saharan Africa and implications for adaptation and development</span>
+<em>Na</em><br>URL: <a href="http://doi.wiley.com/10.1111/gcb.12586" >http://doi.wiley.com/10.1111/gcb.12586</a></div>
+<div> <br></div>
+<div><dd>Machovina Brian and Feeley Kenneth J.<br> <span class="bibtex-protected">Climate change driven shifts in the extent and location of areas suitable for export banana production</span>
+<em>Elsevier B.V.</em><br>URL: <a href="http://dx.doi.org/10.1016/j.ecolecon.2013.08.004" >http://dx.doi.org/10.1016/j.ecolecon.2013.08.004</a></div>
+<div> <br></div>
+<div><dd>Macpherson Cheryl C and Corresponding author Cheryl Macpherson \~A C<br> <span class="bibtex-protected">Caribbean Heat Threatens Health Well-being and the Future of Humanity</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Maina Joseph and Kithiia Justus and Cinner Josh and Neale Ezra and Noble Sylvia and Charles Daniel and Watson James E M<br> <span class="bibtex-protected">Integrating social\$\backslash$textendash\ecological vulnerability assessments with climate forecasts to improve local climate adaptation planning for coral reef fisheries in Papua New Guinea</span>
+<em>Na</em><br>URL: <a href="http://link.springer.com/10.1007/s10113-015-0807-0" >http://link.springer.com/10.1007/s10113-015-0807-0</a></div>
+<div> <br></div>
+<div><dd>Maynard Jeffrey and van Hooidonk Ruben and Eakin C. Mark and Puotinen Marjetta and Garren Melissa and Williams Gareth and Heron Scott F. and Lamb Joleah and Weil Ernesto and Willis Bette and Harvell C. Drew<br> <span class="bibtex-protected">Projections of climate conditions that increase coral disease susceptibility and pathogen abundance and virulence</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2625" >http://www.nature.com/doifinder/10.1038/nclimate2625</a></div>
+<div> <br></div>
+<div><dd>Mbow Cheikh and Noordwijk Meine Van and Luedeling Eike and Neufeldt Henry and Minang Peter A and Kowero Godwin<br> <span class="bibtex-protected">ScienceDirect Agroforestry solutions to address food security and climate change challenges in Africa</span>
+<em>Elsevier B.V.</em><br>URL: <a href="http://dx.doi.org/10.1016/j.cosust.2013.10.014" >http://dx.doi.org/10.1016/j.cosust.2013.10.014</a></div>
+<div> <br></div>
+<div><dd>McConney Patrick and Cox Shelly Ann and Parsram Kemraj<br> <span class="bibtex-protected">Building food security and resilience into fisheries governance in the Eastern Caribbean</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-014-0703-z" >http://link.springer.com/article/10.1007/s10113-014-0703-z</a></div>
+<div> <br></div>
+<div><dd>Mendelsohn Robert and Emanuel Kerry and Chonabayashi Shun and Bakkensen Laura<br> <span class="bibtex-protected">The impact of climate change on global tropical cyclone damage</span>
+<em>Nature Publishing Group</em><br>URL: <a href="http://dx.doi.org/10.1038/nclimate1357" >http://dx.doi.org/10.1038/nclimate1357</a></div>
+<div> <br></div>
+<div><dd>Mogelgaard Kathleen<br> <span class="bibtex-protected">Climate Change Adaptation and Population Dynamics in Latin America and the Caribbean</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Mohanty Manoranjan<br> <span class="bibtex-protected">New renewable energy sources green energy development and climate change</span>
+<em>Na</em><br>URL: <a href="http://www.scopus.com/inward/record.url?eid" >http://www.scopus.com/inward/record.url?eid</a></div>
+<div> <br></div>
+<div><dd>Mounkaila Moussa S. and Abiodun Babatunde J. and 'Bayo Omotosho J.<br> <span class="bibtex-protected">Assessing the capability of CORDEX models in simulating onset of rainfall in West Africa</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>M\"uller C and Cramer Wolfgang<br> <span class="bibtex-protected">Climate change risks for African agriculture</span>
+<em>Na</em><br>URL: <a href="http://www.pnas.org/content/108/11/4313.short" >http://www.pnas.org/content/108/11/4313.short</a></div>
+<div> <br></div>
+<div><dd>Mumby Peter J. and Wolff Nicholas H. and Bozec Yves Marie and Chollett Iliana and Halloran Paul<br> <span class="bibtex-protected">Operationalizing the resilience of coral reefs in an era of climate change</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Murphy Bradley F. and Power Scott B. and Mcgree Simon<br> <span class="bibtex-protected">The varied impacts of El Ni??o-southern oscillation on pacific Island climates</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Mycoo Michelle and Chadwick Andrew<br> <span class="bibtex-protected">Adaptation to climate change: the coastal zone of Barbados</span>
+<em>Thomas Telford Ltd</em><br>URL: <a href="http://www.icevirtuallibrary.com/doi/10.1680/maen.2011.19" >http://www.icevirtuallibrary.com/doi/10.1680/maen.2011.19</a></div>
+<div> <br></div>
+<div><dd>N'cho Simon Akahoua and Mourits Monique and Rodenburg Jonne and Demont Matty and Oude Lansink Alfons<br> <span class="bibtex-protected">Determinants of parasitic weed infestation in rainfed lowland rice in Benin</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S0308521X14000900" >http://linkinghub.elsevier.com/retrieve/pii/S0308521X14000900</a></div>
+<div> <br></div>
+<div><dd>Neumann Kathleen and Hermans Frans<br> <span class="bibtex-protected">What Drives Human Migration in Sahelian Countries? A Meta-analysis</span>
+<em>Na</em><br>URL: <a href="http://dx.doi.org/10.1002/psp.1962\%5Cnhttp://doi.wiley.com/10.1002/psp.1962" >http://dx.doi.org/10.1002/psp.1962\%5Cnhttp://doi.wiley.com/10.1002/psp.1962</a></div>
+<div> <br></div>
+<div><dd>Nicol Simon J. and Allain Valerie and Pilling Graham M. and Polovina Jeff and Coll Marta and Bell Johann and Dalzell Paul and Sharples Peter and Olson Robert and Griffiths Shane and Dambacher Jeffrey M. and Young Jock and Lewis Antony and Hampton John and Jurado Molina Jesus and Hoyle Simon and Briand Karine and Bax Nic and Lehodey Patrick and Williams Peter<br> <span class="bibtex-protected">An ocean observation system for monitoring the affects of climate change on the ecology and sustainability of pelagic fisheries in the Pacific Ocean</span>
+<em>Springer Netherlands</em><br>URL: <a href="http://link.springer.com/10.1007/s10584-012-0598-y" >http://link.springer.com/10.1007/s10584-012-0598-y</a></div>
+<div> <br></div>
+<div><dd>Nunn Patrick D. and Aalbersberg William and Lata Shalini and Gwilliam Marion<br> <span class="bibtex-protected">Beyond the core: Community governance for climate-change adaptation in peripheral parts of Pacific Island Countries</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Ortiz Juan Carlos and Bozec Yves-Marie and Wolff Nicholas H. and Doropoulos Christopher and Mumby Peter J<br> <span class="bibtex-protected">Global disparity in the ecological benefits of reducing carbon emissions for coral reefs</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2439" >http://www.nature.com/doifinder/10.1038/nclimate2439</a></div>
+<div> <br></div>
+<div><dd>Ou??draogo Mathieu and Zougmor?? Robert and Moussa Abdoulaye S. and Partey Samuel T. and Thornton Philip K. and Kristjanson Patti and Ndour Nd??ye Y B and Som?? L??opold and Naab Jesse and Boureima Moussa and Diakit?? Lamissa and Quiros Carlos<br> <span class="bibtex-protected">Markets and climate are driving rapid change in farming practices in Savannah West Africa</span>
+<em>Na</em><br>URL: <a href="http://link.springer.com/10.1007/s10113-016-1029-9" >http://link.springer.com/10.1007/s10113-016-1029-9</a></div>
+<div> <br></div>
+<div><dd>Perez C. and Jones E. M. and Kristjanson P. and Cramer L. and Thornton P. K. and F\"orch W. and Barahona C.<br> <span class="bibtex-protected">How resilient are farming households and communities to a changing climate in Africa? A gender-based perspective</span>
+<em>Na</em><br>URL: <a href="http://www.sciencedirect.com/science/article/pii/S0959378015000825" >http://www.sciencedirect.com/science/article/pii/S0959378015000825</a></div>
+<div> <br></div>
+<div><dd>Poan E. D. and Gachon P. and Dueymes G. and Diaconescu E. and Laprise R. and Seidou Sanda I.<br> <span class="bibtex-protected">West African monsoon intraseasonal activity and its daily precipitation indices in regional climate models: diagnostics and challenges</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s00382-016-3016-8" >http://link.springer.com/article/10.1007/s00382-016-3016-8</a></div>
+<div> <br></div>
+<div><dd>Porter John R. and Xie Liyong and Challinor Andrew J and Cochrane Kevern and Howden S. Mark and Iqbal Muhammad Mohsin and Lobell David B. and Travasso Maria Isabel<br> <span class="bibtex-protected">Food security and food production systems</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>P\"ortner H.-O. and Karl D.M. and Boyd P.W. and Cheung W.W.L. and Lluch-Cota S.E. and Nojiri Y. and Schmidt D.N. and Zavialo P.O.<br> <span class="bibtex-protected">Ocean systems. In: Climate Change 2014: Impacts Adaptation and Vulnerability. Part A: Global and Sectoral Aspects.</span>
+<em>Cambridge University Press</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Power Scott B. and Delage Fran\ccois P. D. and Chung Christine T. Y. and Ye Hua and Murphy Bradley F.<br> <span class="bibtex-protected">Humans have already increased the risk of major disruptions to Pacific rainfall</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/ncomms14368" >http://www.nature.com/doifinder/10.1038/ncomms14368</a></div>
+<div> <br></div>
+<div><dd>Quataert Ellen and Storlazzi Curt and Van Rooijen Arnold and Cheriton Olivia and Van Dongeren Ap<br> <span class="bibtex-protected">The influence of coral reefs and climate change on wave-driven flooding of tropical coastlines</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Ramarohetra Johanna and Sultan Benjamin and Baron Christian and Gaiser Thomas and Gosset Marielle<br> <span class="bibtex-protected">How satellite rainfall estimate errors may impact rainfed cereal yield simulation in West Africa</span>
+<em>Elsevier B.V.</em><br>URL: <a href="http://dx.doi.org/10.1016/j.agrformet.2013.05.010" >http://dx.doi.org/10.1016/j.agrformet.2013.05.010</a></div>
+<div> <br></div>
+<div><dd>Randall C J and van Woesik R.<br> <span class="bibtex-protected">Contemporary white-band disease in Caribbean corals driven by climate change</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2530" >http://www.nature.com/doifinder/10.1038/nclimate2530</a></div>
+<div> <br></div>
+<div><dd>Rasmussen Kjeld and D'haen Sarah and Fensholt Rasmus and Fog Bjarne and Horion Stephanie and Nielsen Jonas Ostergaard and Rasmussen Laura Vang and Reenberg Anette<br> <span class="bibtex-protected">Environmental change in the Sahel: reconciling contrasting evidence and interpretations</span>
+<em>Na</em><br>URL: <a href="http://link.springer.com/10.1007/s10113-015-0778-1" >http://link.springer.com/10.1007/s10113-015-0778-1</a></div>
+<div> <br></div>
+<div><dd>Research Institute (IFPRI) International Food Policy<br> <span class="bibtex-protected">Livestock and mixed crop-livestock systems</span>
+<em>International Food Policy Research Institute</em><br>URL: <a href="http://ebrary.ifpri.org/cdm/singleitem/collection/p15738coll2/id/128746/rec/11" >http://ebrary.ifpri.org/cdm/singleitem/collection/p15738coll2/id/128746/rec/11</a></div>
+<div> <br></div>
+<div><dd>Reyer Christopher P O and Adams Sophie and Albrecht Torsten and Baarsch Florent and Boit Alice and Trujillo Nella Canales and Cartsburg Matti and Coumou Dim and Eden Alexander and Fernandes Erick and Langerwisch Fanny and Marcus Rachel and Mengel Matthias and Mira-Salama Daniel and Perette Mah\'e and Pereznieto Paola and Ramirez-Villegas Julian and Reinhardt Julia and Robinson Alexander and Rocha Marcia and Sakschewski Boris and Schaeffer Michiel and Schleussner Carl-Friedrich and Serdeczny Olivia and Thonicke Kirsten<br> <span class="bibtex-protected">Climate change impacts in Latin America and the Caribbean and their implications for development</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0854-6" >http://link.springer.com/article/10.1007/s10113-015-0854-6</a></div>
+<div> <br></div>
+<div><dd>Rhiney Kevon<br> <span class="bibtex-protected">Geographies of caribbean vulnerability in a changing climate: Issues and trends</span>
+<em>Na</em><br>URL: <a href="http://onlinelibrary.wiley.com/doi/10.1111/gec3.12199/full" >http://onlinelibrary.wiley.com/doi/10.1111/gec3.12199/full</a></div>
+<div> <br></div>
+<div><dd>Rippke Ulrike and Ramirez-Villegas Julian and Jarvis Andy and Vermeulen Sonja J. and Parker Louis and Mer Flora and Diekkr\"uger Bernd and Challinor Andrew J. and Howden Mark<br> <span class="bibtex-protected">Timescales of transformational climate change adaptation in sub-Saharan African agriculture</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2947\%5Cnhttp://www.nature.com/nclimate/journal/vaop/ncurrent/full/nclimate2947.html\%5Cnhttp://www.nature.com/nclimate/journal/vaop/ncurrent/pdf/nclimate2947.pdf" >http://www.nature.com/doifinder/10.1038/nclimate2947\%5Cnhttp://www.nature.com/nclimate/journal/vaop/ncurrent/full/nclimate2947.html\%5Cnhttp://www.nature.com/nclimate/journal/vaop/ncurrent/pdf/nclimate2947.pdf</a></div>
+<div> <br></div>
+<div><dd>Robinson Stacy-ann and Dornan Matthew<br> <span class="bibtex-protected">International financing for climate change adaptation in small island developing states</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-1085-1" >http://link.springer.com/article/10.1007/s10113-016-1085-1</a></div>
+<div> <br></div>
+<div><dd>Robinson Stacy-Ann and Gilfillan Daniel<br> <span class="bibtex-protected">Regional organisations and climate change adaptation in small island developing states</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/10.1007/s10113-016-0991-6" >http://link.springer.com/10.1007/s10113-016-0991-6</a></div>
+<div> <br></div>
+<div><dd>Rogers Alice and Blanchard Julia L. and Mumby Peter J.<br> <span class="bibtex-protected">Vulnerability of Coral Reef Fisheries to a Loss of Structural Complexity</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Roudier Philippe and Sultan Benjamin and Quirion Philippe and Berg Alexis<br> <span class="bibtex-protected">The impact of future climate change on West African crop yields: What does the recent literature say?</span>
+<em>Elsevier Ltd</em><br>URL: <a href="http://dx.doi.org/10.1016/j.gloenvcha.2011.04.007" >http://dx.doi.org/10.1016/j.gloenvcha.2011.04.007</a></div>
+<div> <br></div>
+<div><dd>Saint Ville Arlette S. and Hickey Gordon M. and Phillip Leroy E.<br> <span class="bibtex-protected">Addressing food and nutrition insecurity in the Caribbean through domestic smallholder farming system innovation</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0770-9" >http://link.springer.com/article/10.1007/s10113-015-0770-9</a></div>
+<div> <br></div>
+<div><dd>Salack Seyni and Klein Cornelia and Giannini Alessandra and Sarr Benoit and Worou Omonlola N and Belko Nouhoun and Jan Bliefernicht Jan and Kunstman Harald<br> <span class="bibtex-protected">Global warming induced hybrid rainy seasons in the Sahel</span>
+<em>IOP Publishing</em><br>URL: <a href="http://stacks.iop.org/1748-9326/11/i" >http://stacks.iop.org/1748-9326/11/i</a></div>
+<div> <br></div>
+<div><dd>Salack Seyni and Sarr Benoit and Sangare Sheick K. and Ly Mouhamed and Sanda Ibrah Seidou and Kunstmann Harald<br> <span class="bibtex-protected">Crop-climate ensemble scenarios to improve risk assessment and resilience in the semi-arid regions of West Africa</span>
+<em>Na</em><br>URL: <a href="https://www.scopus.com/inward/record.uri?partnerID" >https://www.scopus.com/inward/record.uri?partnerID</a></div>
+<div> <br></div>
+<div><dd>Sanni Maruf and Jalloh Abdulai and Diouf Aliou<br> <span class="bibtex-protected">Review of research and policies for climate change adaptation in urban areas of West Africa</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Sarr Beno\^it<br> <span class="bibtex-protected">Present and future climate change in the semi-arid region of West Africa: A crucial input for practical adaptation in agriculture</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Sarr Beno\^it and Atta Sanoussi and Ly Mohamed and Salack Seyni and Ourback Timoth\'ee and Subsol S\'ebastien and George David Alan<br> <span class="bibtex-protected">Adapting to climate variability and change in smallholder farming communities: A case study from Burkina Faso Chad and Niger (CVCADAPT)</span>
+<em>Na</em><br>URL: <a href="http://www.academicjournals.org/JAERD" >http://www.academicjournals.org/JAERD</a></div>
+<div> <br></div>
+<div><dd>Schaeffer Michiel and Baarsch Florent and Adams Sophie and De Bruin Kelly and de Marez Laetitia and Freitas Sandra and Hof Andries and Hare Bill<br> <span class="bibtex-protected">Africas Adaptation Gap</span>
+<em>Na</em><br>URL: <a href="http://www.unep.org/pdf/AfricaAdapatationGapreport.pdf" >http://www.unep.org/pdf/AfricaAdapatationGapreport.pdf</a></div>
+<div> <br></div>
+<div><dd>Schaeffer Michiel and Baarsch Florent and Balo Gilbert and de Bruin Kelly and Calland Richard and Fallasch Felix and Melkie Mahlet Eyassu and Verwey Len and Freitas Sandra and Marez Laetitia De and van Rooij Jerome and Hare Bill<br> <span class="bibtex-protected">Africa's Adaptation Gap 2</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Schleussner Carl-Friedrich and Lissner Tabea K. and Fischer Erich M. and Wohland Jan and Perrette Mah\'e and Golly Antonius and Rogelj Joeri and Childers Katelin and Schewe Jacob and Frieler Katja and Mengel Matthias and Hare William and Schaeffer Michiel<br> <span class="bibtex-protected">Differential climate impacts for policy relevant limits to global warming: the case of 1.5°C and 2°C</span>
+<em>Na</em><br>URL: <a href="http://www.earth-syst-dynam.net/7/327/2016/" >http://www.earth-syst-dynam.net/7/327/2016/</a></div>
+<div> <br></div>
+<div><dd>Schmutter Katherine and Nash Merinda and Dovey Liz<br> <span class="bibtex-protected">Ocean acidification: assessing the vulnerability of socioeconomic systems in Small Island Developing States</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-0949-8" >http://link.springer.com/article/10.1007/s10113-016-0949-8</a></div>
+<div> <br></div>
+<div><dd>Schweikert Amy and Chinowsky Paul and Espinet Xavier and Tarbert Michael<br> <span class="bibtex-protected">Climate change and infrastructure impacts: Comparing the impact on roads in ten countries through 2100</span>
+<em>Elsevier B.V.</em><br>URL: <a href="http://dx.doi.org/10.1016/j.proeng.2014.07.072" >http://dx.doi.org/10.1016/j.proeng.2014.07.072</a></div>
+<div> <br></div>
+<div><dd>Scott D and G\"ossling S and Hall C M<br> <span class="bibtex-protected">International tourism and climate change</span>
+<em>Na</em><br>URL: <a href="http://www.academia.edu/8655114/International\_Tourism\_and\_Climate\_Change" >http://www.academia.edu/8655114/International\_Tourism\_and\_Climate\_Change</a></div>
+<div> <br></div>
+<div><dd>Scott Daniel and Simpson Murray Charles and Sim Ryan<br> <span class="bibtex-protected">The vulnerability of Caribbean coastal tourism to scenarios of climate change related sea level rise</span>
+<em>Na</em><br>URL: <a href="http://www.tandfonline.com/doi/abs/10.1080/09669582.2012.699063" >http://www.tandfonline.com/doi/abs/10.1080/09669582.2012.699063</a></div>
+<div> <br></div>
+<div><dd>Searchinger Timothy D and Estes Lyndon and Thornton Philip K and Beringer Tim and Notenbaert An and Rubenstein Daniel and Heimlich Ralph and Licker Rachel and Herrero Mario<br> <span class="bibtex-protected">High carbon and biodiversity costs from converting Africa's wet savannahs to cropland</span>
+<em>Nature Research</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2584\%5Cnpapers3://publication/doi/10.1038/nclimate2584" >http://www.nature.com/doifinder/10.1038/nclimate2584\%5Cnpapers3://publication/doi/10.1038/nclimate2584</a></div>
+<div> <br></div>
+<div><dd>Serdeczny Olivia and Adams Sophie and Baarsch Florent and Coumou Dim and Robinson Alexander and Hare William and Schaeffer Michiel and Perrette Mah\'e and Reinhardt Julia<br> <span class="bibtex-protected">Climate change impacts in Sub-Saharan Africa: from physical changes to their social repercussions</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0910-2" >http://link.springer.com/article/10.1007/s10113-015-0910-2</a></div>
+<div> <br></div>
+<div><dd>Shah Kalim U. and Dulal Hari Bansha<br> <span class="bibtex-protected">Household capacity to adapt to climate change and implications for food security in Trinidad and Tobago</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-015-0830-1" >http://link.springer.com/article/10.1007/s10113-015-0830-1</a></div>
+<div> <br></div>
+<div><dd>Somda Jacques and Zougmor\'e Robert and Sawadogo Issa and Bationo Babou Andr\'e and Buah Saaka and Abasse Tougiani<br> <span class="bibtex-protected">Adaptation Processes in Agriculture and Food Security: Insights from Evaluating Behavioral Changes in West Africa</span>
+<em>Springer International Publishing</em><br>URL: <a href="http://link.springer.com/10.1007/978-3-319-43702-6\_14" >http://link.springer.com/10.1007/978-3-319-43702-6\_14</a></div>
+<div> <br></div>
+<div><dd>Sonwa Denis J. and Dieye Amadou and El Mzouri El-Houssine and Majule Amos and Mugabe Francis T. and Omolo Nancy and Wouapi Herv\'e and Obando Joy and Brooks Nick<br> <span class="bibtex-protected">Drivers of climate risk in African agriculture</span>
+<em>Na</em><br>URL: <a href="http://www.tandfonline.com/doi/full/10.1080/17565529.2016.1167659" >http://www.tandfonline.com/doi/full/10.1080/17565529.2016.1167659</a></div>
+<div> <br></div>
+<div><dd>Spalding-Fecher Randall and Joyce Brian and Winkler Harald<br> <span class="bibtex-protected">Climate change and hydropower in the Southern African Power Pool and Zambezi River Basin: System-wide impacts and policy implications</span>
+<em>Elsevier</em><br>URL: <a href="http://dx.doi.org/10.1016/j.enpol.2016.12.009" >http://dx.doi.org/10.1016/j.enpol.2016.12.009</a></div>
+<div> <br></div>
+<div><dd>Spalding Mark D. and Ruffo Susan and Lacambra Carmen and Meliane Im\`en and Hale Lynne Zeitlin and Shepard Christine C. and Beck Michael W.<br> <span class="bibtex-protected">The role of ecosystems in coastal protection: Adapting to climate change and coastal hazards</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Stephenson Tannecia S. and Vincent Lucie a. and Allen Theodore and Van Meerbeeck Cedric J. and Mclean Natalie and Peterson Thomas C. and Taylor Michael a. and Aaron-Morrison Arlene P. and Auguste Thomas and Bernard Didier and Boekhoudt Joffrey R I and Blenman Rosalind C. and Braithwaite George C. and Brown Glenroy and Butler Mary and Cumberbatch Catherine J M and Etienne-Leblanc Sheryl and Lake Dale E. and Martin Delver E. and Mcdonald Joan L. and Ozoria Zaruela Maria and Porter Avalon O. and Santana Ramirez Mayra and Tamar Gerard a. and Roberts Bridget a. and Sallons Mitro Sukarni and Shaw Adrian and Spence Jacqueline M. and Winter Amos and Trotman Adrian R.<br> <span class="bibtex-protected">Changes in extreme temperature and precipitation in the Caribbean region 1961-2010</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Storlazzi C D and Elias Edwin P L and Berkowitz Paul<br> <span class="bibtex-protected">Many atolls may be uninhabitable within decades due to climate change</span>
+<em>Nature Publishing Group</em><br>URL: <a href="http://dx.doi.org/10.1038/srep14546" >http://dx.doi.org/10.1038/srep14546</a></div>
+<div> <br></div>
+<div><dd>Sugi Masato and Murakami Hiroyuki and Yoshida Kohei<br> <span class="bibtex-protected">Projection of future changes in the frequency of intense tropical cyclones</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Sultan B and Guan K and Kouressy M and Biasutti M and Piani C and Hammer G L and McLean G and Lobell D B<br> <span class="bibtex-protected">Robust features of future climate change impacts on sorghum yields in West Africa</span>
+<em>Na</em><br>URL: <a href="http://iopscience.iop.org/article/10.1088/1748-9326/9/10/104006\%5Cnpapers3://publication/doi/10.1088/1748-9326/9/10/104006" >http://iopscience.iop.org/article/10.1088/1748-9326/9/10/104006\%5Cnpapers3://publication/doi/10.1088/1748-9326/9/10/104006</a></div>
+<div> <br></div>
+<div><dd>Sultan B and Roudier P and Quirion P and Alhassane A and Muller B and Dingkuhn M and Ciais P and Guimberteau M and Traore S and Baron C<br> <span class="bibtex-protected">Assessing climate change impacts on sorghum and millet yields in the Sudanian and Sahelian savannas of West Africa</span>
+<em>Na</em><br>URL: <a href="http://iopscience.iop.org/article/10.1088/1748-9326/8/1/014040\%5Cnpapers3://publication/doi/10.1088/1748-9326/8/1/014040" >http://iopscience.iop.org/article/10.1088/1748-9326/8/1/014040\%5Cnpapers3://publication/doi/10.1088/1748-9326/8/1/014040</a></div>
+<div> <br></div>
+<div><dd>Sultan Benjamin and Gaetani Marco<br> <span class="bibtex-protected">Agriculture in West Africa in the Twenty-first Century: climate change and impacts scenarios and potential for adaptation</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Suza Walter P. and Gibson Paul and Edema Richard and Akromah Richard and Sibiya Julia and Madakadze Rufaro and Lamkey Kendall R.<br> <span class="bibtex-protected">Plant breeding capacity building in Africa</span>
+<em>Nature Research</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate3139" >http://www.nature.com/doifinder/10.1038/nclimate3139</a></div>
+<div> <br></div>
+<div><dd>Sylla Mouhamadou Bamba and Elguindi Nellie and Giorgi Filippo and Wisser Dominik<br> <span class="bibtex-protected">Projected robust shift of climate zones over West Africa in response to anthropogenic climate change for the late 21st century</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Sylla Mouhamadou Bamba and Pinghouinde M.K. and Gibba Peter and Kebe I. and Klutse N. A. B.<br> <span class="bibtex-protected">Climate Change over West Africa: Recent Trends and Future Projections</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Tanner Thomas and Mensah Adelina and Lawson Elaine T. and Gordon Chris and Godfrey-Wood Rachel and Cannon Terry<br> <span class="bibtex-protected">Political Economy of Climate Compatible Development: Artisanal Fisheries and Climate Change in Ghana</span>
+<em>Na</em><br>URL: <a href="http://doi.wiley.com/10.1111/j.2040-0209.2014.00446.x" >http://doi.wiley.com/10.1111/j.2040-0209.2014.00446.x</a></div>
+<div> <br></div>
+<div><dd>Taylor Gordon T and Muller-Karger Frank E and Thunell Robert C and Scranton Mary I and Astor Yrene and Varela Ramon and Ghinaglia Luis Troccoli and Lorenzoni Laura and Fanning Kent A and Hameed Sultan and Doherty Owen<br> <span class="bibtex-protected">Ecosystem responses in the southern Caribbean Sea to global climate change.</span>
+<em>National Academy of Sciences</em><br>URL: <a href="http://www.ncbi.nlm.nih.gov/pubmed/23071299 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid" >http://www.ncbi.nlm.nih.gov/pubmed/23071299 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid</a></div>
+<div> <br></div>
+<div><dd>Terry James P. and Chui Ting Fong May<br> <span class="bibtex-protected">Evaluating the fate of freshwater lenses on atoll islands after eustatic sea-level rise and cyclone-driven inundation: A modelling approach</span>
+<em>Elsevier B.V.</em><br>URL: <a href="http://dx.doi.org/10.1016/j.gloplacha.2012.03.008" >http://dx.doi.org/10.1016/j.gloplacha.2012.03.008</a></div>
+<div> <br></div>
+<div><dd>Theobald Alison and McGowan Hamish<br> <span class="bibtex-protected">Evidence of increased tropical moisture in southeast Australian alpine precipitation during ENSO</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>UN-OHRLLS<br> <span class="bibtex-protected">Small Island Developing States in numbers</span>
+<em>Na</em><br>URL: <a href="https://sustainabledevelopment.un.org/content/documents/2189SIDS-IN-NUMBERS-CLIMATE-CHANGE-EDITION\_2015.pdf" >https://sustainabledevelopment.un.org/content/documents/2189SIDS-IN-NUMBERS-CLIMATE-CHANGE-EDITION\_2015.pdf</a></div>
+<div> <br></div>
+<div><dd>Vardakoulias Olivier and Nicholles Natalie<br> <span class="bibtex-protected">Managing uncertainty: An economic evaluation of community-based adaptation in Dakoro Niger</span>
+<em>Na</em><br>URL: <a href="http://www.careclimatechange.org/files/Managing\_Uncertainty\_CARE\_nefc\_email\_version.pdf" >http://www.careclimatechange.org/files/Managing\_Uncertainty\_CARE\_nefc\_email\_version.pdf</a></div>
+<div> <br></div>
+<div><dd>Vervoort Joost M. and Thornton Philip K. and Kristjanson Patti and F\"orch Wiebke and Ericksen Polly J. and Kok Kasper and Ingram John S I and Herrero Mario and Palazzo Amanda and Helfgott Ariella E S and Wilkinson Angela and Havl\'ik Petr and Mason-D'Croz Daniel and Jost Chris<br> <span class="bibtex-protected">Challenges to scenario-guided adaptive action on food security under climate change</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S0959378014000387" >http://linkinghub.elsevier.com/retrieve/pii/S0959378014000387</a></div>
+<div> <br></div>
+<div><dd>Waha K. and M\"uller C. and Bondeau A. and Dietrich J.P. and Kurukulasuriya P. and Heinke J. and Lotze-Campen H.<br> <span class="bibtex-protected">Adaptation to climate change through the choice of cropping system and sowing date in sub-Saharan Africa</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S095937801200132X" >http://linkinghub.elsevier.com/retrieve/pii/S095937801200132X</a></div>
+<div> <br></div>
+<div><dd>Wairiu Morgan<br> <span class="bibtex-protected">Land degradation and sustainable land management practices in Pacific Island Countries</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-1041-0" >http://link.springer.com/article/10.1007/s10113-016-1041-0</a></div>
+<div> <br></div>
+<div><dd>Wang Guomin and Power Scott B. and McGree Simon<br> <span class="bibtex-protected">Unambiguous warming in the western tropical Pacific primarily caused by anthropogenic forcing</span>
+<em>Na</em><br>URL: <a href="http://doi.wiley.com/10.1002/joc.4395" >http://doi.wiley.com/10.1002/joc.4395</a></div>
+<div> <br></div>
+<div><dd>Warrick Olivia and Aalbersberg William and Dumaru Patrina and McNaught Rebecca and Teperman Kate<br> <span class="bibtex-protected">The \$\backslash$textquoteleft\Pacific Adaptive Capacity Analysis Framework\$\backslash$textquoteright\: guiding the assessment of adaptive capacity in Pacific island communities</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-1036-x" >http://link.springer.com/article/10.1007/s10113-016-1036-x</a></div>
+<div> <br></div>
+<div><dd>Webber Heidi and Gaiser Thomas and Ewert Frank<br> <span class="bibtex-protected">What role can crop models play in supporting climate change adaptation decisions to enhance food security in Sub-Saharan Africa?</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S0308521X1400002X" >http://linkinghub.elsevier.com/retrieve/pii/S0308521X1400002X</a></div>
+<div> <br></div>
+<div><dd>Weber Eberhard<br> <span class="bibtex-protected">Trade agreements labour mobility and climate change in the Pacific Islands</span>
+<em>Springer Berlin Heidelberg</em><br>URL: <a href="http://link.springer.com/article/10.1007/s10113-016-1047-7" >http://link.springer.com/article/10.1007/s10113-016-1047-7</a></div>
+<div> <br></div>
+<div><dd>Weng Kevin C and Glazier Ed and Nicol Simon J and Hobday Alistair J<br> <span class="bibtex-protected">Fishery management development and food security in the Western and Central Pacific in the context of climate change</span>
+<em>Elsevier</em><br>URL: <a href="http://dx.doi.org/10.1016/j.dsr2.2014.10.025" >http://dx.doi.org/10.1016/j.dsr2.2014.10.025</a></div>
+<div> <br></div>
+<div><dd>Wood Stephen A. and Jina Amir S. and Jain Meha and Kristjanson Patti and DeFries Ruth S.<br> <span class="bibtex-protected">Smallholder farmer cropping decisions related to climate variability across multiple regions</span>
+<em>Na</em><br>URL: <a href="http://linkinghub.elsevier.com/retrieve/pii/S0959378013002410" >http://linkinghub.elsevier.com/retrieve/pii/S0959378013002410</a></div>
+<div> <br></div>
+<div><dd>Woodruff Jonathan D and Irish Jennifer L and Camargo Suzana J<br> <span class="bibtex-protected">Coastal flooding by tropical cyclones and sea-level rise.</span>
+<em>Na</em><br>URL: <a href="http://www.ncbi.nlm.nih.gov/pubmed/24305147" >http://www.ncbi.nlm.nih.gov/pubmed/24305147</a></div>
+<div> <br></div>
+<div><dd>World Bank<br> <span class="bibtex-protected">The Economics of Adaptation to Climate Change</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>World Bank<br> <span class="bibtex-protected">Economics of Adaptation to Climate Change: Ghana</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>World Bank<br> <span class="bibtex-protected">Climate Impacts on Energy Systems</span>
+<em>Na</em><br>URL: <a href="Na" >Na</a></div>
+<div> <br></div>
+<div><dd>Zhou Yuan and Staatz John<br> <span class="bibtex-protected">Projected demand and supply for various foods in West Africa: Implications for investments and food policy</span>
+<em>Na</em><br>URL: <a href="http://www.sciencedirect.com/science/article/pii/S0306919216300185" >http://www.sciencedirect.com/science/article/pii/S0306919216300185</a></div>
+<div> <br></div>
+<div><dd>Zougmor\'e Robert and Partey Samuel and Ou\'edraogo Mathieu and Omitoyin Bamidele and Thomas Timothy and Ayantunde Augustine and Ericksen Polly and Said Mohammed and Jalloh Abdulai<br> <span class="bibtex-protected">Toward climate-smart agriculture in West Africa: a review of climate change impacts adaptation strategies and policy developments for the livestock fishery and crop production sectors</span>
+<em>Na</em><br>URL: <a href="http://agricultureandfoodsecurity.biomedcentral.com/articles/10.1186/s40066-016-0075-3\%0Ahttp://ebrary.ifpri.org/cdm/singleitem/collection/p15738coll5/id/5610/rec/1" >http://agricultureandfoodsecurity.biomedcentral.com/articles/10.1186/s40066-016-0075-3\%0Ahttp://ebrary.ifpri.org/cdm/singleitem/collection/p15738coll5/id/5610/rec/1</a></div>
+<div> <br></div>
+</div>
+{% endblock %}

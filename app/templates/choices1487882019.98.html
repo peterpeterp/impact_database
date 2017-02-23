@@ -1,0 +1,90 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+
+<!-- REGIONS -->
+
+<div class="span3.5">
+
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_region">
+      {{ form_region.hidden_tag() }}
+      {{ form_region.regions.label }} {{ form_region.regions(rows=10, multiple=True, size=5) }}
+    </div>
+  
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_thematic">
+      {{ form_thematic.hidden_tag() }}
+      {{ form_thematic.thematics.label }} {{ form_thematic.thematics(rows=10, multiple=True, size=5) }}
+    </div>
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>  
+  </div>  
+
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_type">
+      {{ form_type.hidden_tag() }}
+      {{ form_type.types.label }} {{ form_type.types(rows=10, multiple=True, size=5) }}
+    </div>
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>  
+  </div>  
+
+  <div class="row">
+    <div class="span2.5">
+      <form method="POST" action="/add_unsorted">
+      {{ form_unsorted.hidden_tag() }}
+      {{ form_unsorted.unsorteds.label }} {{ form_unsorted.unsorteds(rows=10, multiple=True, size=10) }}
+    </div>
+    <div class="span0.5">
+      <br><br>  
+      <button type="submit" class="btn">-></button>
+      </form>
+      </form>
+    </div>  
+  </div>  
+
+</div>
+
+
+<div class="span3.5">
+    <form method="POST" action="/remove_keyword">
+    {{ form_selected.hidden_tag() }}
+    {{ form_selected.selected.label }} {{ form_selected.selected(rows=10, multiple=True, size=37) }}
+    <br>
+    <button type="submit" class="btn">Remove Keyword</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+<div class="span7">
+<div><dd>Kumar Lalit and Taylor Subhashni<br> <span class="bibtex-protected">Exposure of coastal built assets in the South Pacific to climate risks</span>
+<em>Na</em><br>URL: <a href="http://www.nature.com/doifinder/10.1038/nclimate2702" >http://www.nature.com/doifinder/10.1038/nclimate2702</a></div>
+<div> <br></div>
+</div>
+{% endblock %}
