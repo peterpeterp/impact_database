@@ -100,18 +100,18 @@ def choices():
   # create a word cloud
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
   
-  word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
-  wc = settings.WordCloud(background_color="white", max_words=2000,
-               stopwords=settings.stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
+  # word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
+  # wc = settings.WordCloud(background_color="white", max_words=2000,
+  #              stopwords=settings.stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
 
-  # wc.generate_from_frequencies(word_count)
-  wc.generate(' '.join(word_list))
+  # # wc.generate_from_frequencies(word_count)
+  # wc.generate(' '.join(word_list))
 
-  # fig = plt.figure(figsize=(20,10))
-  # #plt.imshow(wc.recolor(color_func= settings.image_colors))
-  plt.imshow(wc)
-  plt.axis('off')
-  plt.savefig('app/static/images/keywords.png')
+  # # fig = plt.figure(figsize=(20,10))
+  # # #plt.imshow(wc.recolor(color_func= settings.image_colors))
+  # plt.imshow(wc)
+  # plt.axis('off')
+  # plt.savefig('app/static/images/keywords.png')
 
   # new.write('<div class="span4">\n<IMG SRC="static/images/keywords.png?'+str(int(round(time.time())))+'" ALT="some asdatext" WIDTH=500 HEIGHT=400>\n</div>\n')#WIDTH=1000 HEIGHT=1000
 
