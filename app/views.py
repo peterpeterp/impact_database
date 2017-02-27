@@ -93,15 +93,21 @@ def choices():
   plt.axis('off')
   plt.savefig('app/static/images/keywords.png')
 
-  # new.write('<div class="span4">\n<IMG SRC="static/images/keywords.png?'+str(int(round(time.time())))+'" ALT="some asdatext" WIDTH=500 HEIGHT=400>\n</div>\n')#WIDTH=1000 HEIGHT=1000
-
-
-
   list_=[]
   for i in selected:
     list_.append(settings.bib._articles[i])
 
-  return render_template('fixed_choices.html',selected=list_,picture_source='static/images/keywords.png?'+str(int(round(time.time()))),form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
+  context = {
+    'selected':list_,
+    'picture_source':'static/images/keywords.png?'+str(int(round(time.time()))),
+    'form_region':form_region, 
+    'form_thematic':form_thematic,
+    'form_type':form_type,
+    'form_unsorted':form_unsorted,
+    'form_selected':form_selected
+  }
+
+  return render_template('fixed_choices.html',**context)
 
 @app.route('/_add_numbers')
 def add_numbers():
@@ -114,6 +120,7 @@ def add_numbers():
 
 def update_keywords():
   print 'update'
+  start=time.time()
   #session['selected_keywords']=session['regions_chosen']+session['thematics_chosen']+session['types_chosen']+session['unsorteds_chosen']
   form_selected = forms.SelectedForm(request.form)
   form_selected.selected.choices = zip(session['selected_keywords'],session['selected_keywords'])
@@ -150,6 +157,7 @@ def update_keywords():
       tmp.remove(unsorted)
   form_unsorted.unsorteds.choices = zip(tmp,tmp)
 
+  print time.time()-start
   return form_region, form_thematic, form_type, form_unsorted, form_selected
 
 
@@ -157,41 +165,41 @@ def update_keywords():
 def add_region():
   form_region = forms.RegionForm(request.form)
   session['selected_keywords'].append(form_region.regions.data)
-  update_keywords()
+  #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_thematic',  methods=('POST', ))
 def add_thematic():
   form_thematic = forms.ThematicForm(request.form)
   session['selected_keywords'].append(form_thematic.thematics.data)
-  update_keywords()
+  #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_type',  methods=('POST', ))
 def add_type():
   form_type = forms.TypeForm(request.form)
   session['selected_keywords'].append(form_type.types.data)
-  update_keywords()
+  #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_unsorted',  methods=('POST', ))
 def add_unsorted():
   form_unsorted = forms.UnsortedForm(request.form)
   session['selected_keywords'].append(form_unsorted.unsorteds.data)
-  update_keywords()
+  #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/remove_keyword',  methods=("POST", ))
 def remove_keyword():
   form_selected = forms.SelectedForm(request.form)
   session['selected_keywords'].remove(form_selected.selected.data)
-  update_keywords()
+  #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/clear_all',  methods=("POST", ))
 def clear_all():
   session['selected_keywords']=[]
-  update_keywords()
+  #update_keywords()
   return redirect(url_for('choices'))
 
 
