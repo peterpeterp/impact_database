@@ -26,6 +26,11 @@ import forms
 import numpy as np
 import glob,os,sys,time
 
+from flask import Flask, jsonify, render_template, request
+
+
+
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -68,44 +73,9 @@ def index():
 
 @app.route('/choices')
 def choices():
+  print 'choices'
 
-  try:
-    session['selected_keywords']=session['regions_chosen']+session['thematics_chosen']+session['types_chosen']+session['unsorteds_chosen']
-    form_selected = forms.SelectedForm(request.form)
-    form_selected.selected.choices = zip(session['selected_keywords'],session['selected_keywords'])
-
-    selected=settings.bib.filter({'keywords':session['selected_keywords']})
-
-    form_region = forms.RegionForm(request.form)
-    tmp = regions[:]
-    for region in regions:
-      if (len(settings.bib.filter({'keywords':session['selected_keywords']+[region]}))==0) | (region in session['regions_chosen']): 
-        tmp.remove(region)
-    form_region.regions.choices = zip(tmp,tmp)
-
-    form_thematic = forms.ThematicForm(request.form)
-    tmp = thematics[:]
-    for thematic in thematics:
-      if (len(settings.bib.filter({'keywords':session['selected_keywords']+[thematic]}))==0) | (thematic in session['thematics_chosen']): 
-        tmp.remove(thematic)
-    form_thematic.thematics.choices = zip(tmp,tmp)
-
-    form_type = forms.TypeForm(request.form)
-    tmp = types[:]
-    for type in types:
-      if (len(settings.bib.filter({'keywords':session['selected_keywords']+[type]}))==0) | (type in session['types_chosen']): 
-        tmp.remove(type)
-    form_type.types.choices = zip(tmp,tmp)
-
-    form_unsorted = forms.UnsortedForm(request.form)
-    tmp = unsorteds[:]
-    for unsorted in unsorteds:
-      if (len(settings.bib.filter({'keywords':session['selected_keywords']+[unsorted]}))==0) | (unsorted in session['unsorteds_chosen']): 
-        tmp.remove(unsorted)
-    form_unsorted.unsorteds.choices = zip(tmp,tmp)
-
-  except KeyError:
-    return redirect(url_for('index'))
+  form_region, form_thematic, form_type, form_unsorted, form_selected = update_keywords()
 
   # create a word cloud
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
@@ -133,77 +103,95 @@ def choices():
 
   return render_template('fixed_choices.html',selected=list_,picture_source='static/images/keywords.png?'+str(int(round(time.time()))),form_region=form_region, form_thematic=form_thematic,form_type=form_type,form_unsorted=form_unsorted,form_selected=form_selected)
 
+@app.route('/_add_numbers')
+def add_numbers():
+    a = request.args.get('a', 0, type=int)
+    b = request.args.get('b', 0, type=int)
+    print 4
+    return jsonify(result=a + b)
+    # return redirect(url_for('choices'))
 
-@app.route('/remove_keyword',  methods=("POST", ))
-def remove_keyword():
+
+def update_keywords():
+  print 'update'
+  #session['selected_keywords']=session['regions_chosen']+session['thematics_chosen']+session['types_chosen']+session['unsorteds_chosen']
   form_selected = forms.SelectedForm(request.form)
-  #if form_selected.validate_on_submit():
-  if True:
-    tmp_region=session['regions_chosen']
-    tmp_thematic=session['thematics_chosen']
-    tmp_type=session['types_chosen']
-    tmp_unsorted=session['unsorteds_chosen']
-    for key in form_selected.selected.data:
-      print key
-      if key in regions:  
-        tmp_region.remove(key)
-      if key in thematics:  
-        tmp_thematic.remove(key)
-      if key in types:  
-        tmp_type.remove(key)
-      if key in unsorteds:  
-        tmp_unsorted.remove(key)
+  form_selected.selected.choices = zip(session['selected_keywords'],session['selected_keywords'])
 
-    session['regions_chosen'] = tmp_region
-    session['thematics_chosen'] = tmp_thematic
-    session['types_chosen'] = tmp_type
-    session['unsorteds_chosen'] = tmp_unsorted
-  else:
-    flash_errors(form_selected)
+  print session['selected_keywords']
+  selected=settings.bib.filter({'keywords':session['selected_keywords']})
 
-  return redirect(url_for('choices'))
+  form_region = forms.RegionForm(request.form)
+  tmp = regions[:]
+  for region in regions:
+    #print region,len(settings.bib.filter({'keywords':session['selected_keywords']+[region]}))==0,session['regions_chosen']
+    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[region]}))==0) | (region in session['selected_keywords']): 
+      tmp.remove(region)
+  form_region.regions.choices = zip(tmp,tmp)
+
+  form_thematic = forms.ThematicForm(request.form)
+  tmp = thematics[:]
+  for thematic in thematics:
+    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[thematic]}))==0) | (thematic in session['selected_keywords']): 
+      tmp.remove(thematic)
+  form_thematic.thematics.choices = zip(tmp,tmp)
+
+  form_type = forms.TypeForm(request.form)
+  tmp = types[:]
+  for type in types:
+    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[type]}))==0) | (type in session['selected_keywords']): 
+      tmp.remove(type)
+  form_type.types.choices = zip(tmp,tmp)
+
+  form_unsorted = forms.UnsortedForm(request.form)
+  tmp = unsorteds[:]
+  for unsorted in unsorteds:
+    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[unsorted]}))==0) | (unsorted in session['selected_keywords']): 
+      tmp.remove(unsorted)
+  form_unsorted.unsorteds.choices = zip(tmp,tmp)
+
+  return form_region, form_thematic, form_type, form_unsorted, form_selected
 
 
 @app.route('/add_region',  methods=('POST', ))
 def add_region():
   form_region = forms.RegionForm(request.form)
-  form_region.regions.choices = zip(regions,regions)
-
-  if form_region.validate_on_submit():
-    session['regions_chosen']+=form_region.regions.data
-  else:
-    flash_errors(form_region)
+  session['selected_keywords'].append(form_region.regions.data)
+  update_keywords()
   return redirect(url_for('choices'))
-
 
 @app.route('/add_thematic',  methods=('POST', ))
 def add_thematic():
   form_thematic = forms.ThematicForm(request.form)
-  form_thematic.thematics.choices = zip(thematics,thematics)
-  if form_thematic.validate_on_submit():
-    session['thematics_chosen']+=form_thematic.thematics.data
-  else:
-    flash_errors(form_thematic)
+  session['selected_keywords'].append(form_thematic.thematics.data)
+  update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_type',  methods=('POST', ))
 def add_type():
   form_type = forms.TypeForm(request.form)
-  form_type.types.choices = zip(types,types)
-  if form_type.validate_on_submit():
-    session['types_chosen']+=form_type.types.data
-  else:
-    flash_errors(form_type)
+  session['selected_keywords'].append(form_type.types.data)
+  update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_unsorted',  methods=('POST', ))
 def add_unsorted():
   form_unsorted = forms.UnsortedForm(request.form)
-  form_unsorted.unsorteds.choices = zip(unsorteds,unsorteds)
-  if form_unsorted.validate_on_submit():
-    session['unsorteds_chosen']+=form_unsorted.unsorteds.data
-  else:
-    flash_errors(form_unsorted)
+  session['selected_keywords'].append(form_unsorted.unsorteds.data)
+  update_keywords()
+  return redirect(url_for('choices'))
+
+@app.route('/remove_keyword',  methods=("POST", ))
+def remove_keyword():
+  form_selected = forms.SelectedForm(request.form)
+  session['selected_keywords'].remove(form_selected.selected.data)
+  update_keywords()
+  return redirect(url_for('choices'))
+
+@app.route('/clear_all',  methods=("POST", ))
+def clear_all():
+  session['selected_keywords']=[]
+  update_keywords()
   return redirect(url_for('choices'))
 
 

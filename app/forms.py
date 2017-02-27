@@ -17,27 +17,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
-from wtforms import RadioField, SelectMultipleField, TextField, IntegerField
+from wtforms import RadioField, SelectMultipleField, TextField, IntegerField, SelectField
 from flask.ext.wtf import Form, validators
 from wtforms.validators import ValidationError, Required, Regexp
 
-class SelectedForm(Form):
-  selected = SelectMultipleField(u'Selected Keywords', choices=[],
-            validators=[Required("Please select at least one keyword.")])
+
 
 class RegionForm(Form):
-  regions = SelectMultipleField(u'Available Regions', choices=[],
+  regions = SelectField(u'Available Regions', choices=[],
             validators=[Required("Please select at least one region.")])
 
 class ThematicForm(Form):
-  thematics = SelectMultipleField(u'Available Thematics', choices=[],
+  thematics = SelectField(u'Available Thematics', choices=[],
             validators=[Required("Please select at least one Thematic.")])
 
 class TypeForm(Form):
-  types = SelectMultipleField(u'Type of Study', choices=[],
+  types = SelectField(u'Type of Study', choices=[],
             validators=[Required("Please select at least one Type of Study.")])
 
 class UnsortedForm(Form):
-  unsorteds = SelectMultipleField(u'Available Keywords', choices=[],
+  unsorteds = SelectField(u'Available Keywords', choices=[],
             validators=[Required("Please select at least one unsorted.")])
 
+class SelectedForm(Form):
+  selected = SelectField(u'Selected Keywords', choices=[],
+            validators=[Required("Please select at least one keyword.")])

@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+  <script type="text/javascript">
+
+   function change_region() {
+    document.getElementById("region_id").submit();
+   }
+
+   function change_thematic() {
+    document.getElementById("thematic_id").submit();
+   }
+
+  function change_type() {
+    document.getElementById("type_id").submit();
+   }
+
+  function change_unsorted() {
+    document.getElementById("unsorted_id").submit();
+   }
+
+  function change_selected() {
+    document.getElementById("selected_id").submit();
+   }
+
+
+  </script>
+
+
     <meta charset="utf-8">
     <title>Impact Literature Stocktake</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +54,7 @@
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="static/assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="static/assets/ico/favicon.png">
+
   </head>
 
   <body>
@@ -92,6 +120,20 @@
     <script src="static/assets/js/bootstrap-collapse.js"></script>
     <script src="static/assets/js/bootstrap-carousel.js"></script>
     <script src="static/assets/js/bootstrap-typeahead.js"></script>
+    <script src="static/assets/js/submit_javascript.js"></script>
+
+
+<script type="text/javascript"
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
 
   </body>
+
 </html>
+
+
+
+
+
