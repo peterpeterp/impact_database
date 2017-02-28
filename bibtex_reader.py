@@ -27,46 +27,80 @@ class bibliography(object):
 	class article(object):
 
 		def __init__(SELF,bibtex,bibli,index):
-			SELF.description=bibtex
-			SELF.author='Na'
-			SELF.title='Na'
-			SELF.year='Na'
-			SELF.publisher='Na'
-			SELF.url='Na'
+			SELF.bibtex=bibtex
+			SELF.author=''
+			SELF.title=''
+			SELF.year=''
+			SELF.publisher=''
+			SELF.institution=''
+			SELF.journal=''
+			SELF.url=''
+			SELF.doi=''
+			SELF.abstract=''
 			SELF.keywords=[]
 			for line in bibtex.split('\n'):
 				if len(line.split('='))>1:
+					if bibli.clean(line.split('=')[0])=='doi': 
+						doi=bibli.clean(line.split('=')[1])
+						SELF.doi=doi
+
 					if bibli.clean(line.split('=')[0])=='url': 
 						url=bibli.clean(line.split('=')[1])
 						SELF.url=url
+
+					if bibli.clean(line.split('=')[0])=='abstract': 
+						abstract=bibli.clean(line.split('=')[1])
+						SELF.abstract=abstract
+
+					if bibli.clean(line.split('=')[0])=='institution': 
+						institution=bibli.clean(line.split('=')[1])
+						SELF.institution=institution
+
+					if bibli.clean(line.split('=')[0])=='journal': 
+						journal=bibli.clean(line.split('=')[1])
+						SELF.journal=journal
+
 					if bibli.clean(line.split('=')[0])=='author': 
-						author=bibli.clean(line.split('=')[1])
+						author_list=bibli.clean(line.split('=')[1]).split(' and')
+						if len(author_list)>1: author=author_list[0]+' et al.'
+						if len(author_list)==1: author=author_list[0]
 						SELF.author=author
 						if author not in bibli._meta['author']:bibli._meta['author'][author]=[]
 						bibli._meta['author'][author].append(index)
+
 					if bibli.clean(line.split('=')[0])=='title': 
 						title=bibli.clean(line.split('=')[1])
 						SELF.title=title
 						if title not in bibli._meta['title']:bibli._meta['title'][title]=[]
 						bibli._meta['title'][title].append(index)
+
 					if bibli.clean(line.split('=')[0])=='year': 
 						year=bibli.clean(line.split('=')[1])
 						SELF.year=year
 						if year not in bibli._meta['year']:bibli._meta['year'][year]=[]
 						bibli._meta['year'][year].append(index)
+
 					if bibli.clean(line.split('=')[0])=='publisher': 
 						publisher=bibli.clean(line.split('=')[1])
 						SELF.publisher=publisher
 						if publisher not in bibli._meta['publisher']:bibli._meta['publisher'][publisher]=[]
 						bibli._meta['publisher'][publisher].append(index)
+
+
 					if bibli.clean(line.split('=')[0])=='keywords': 
 						keywords=bibli.extract_keywords(line.split('=')[1])
 						SELF.keywords=keywords
 
+			if len(list(filter(lambda x: (x.lower() in ['ngo','international institution','governmental institution']),SELF.keywords)))!=0:
+				SELF.keywords.append('grey literature')
 
 			for key in SELF.keywords:
 				if key not in bibli._meta['keywords']:bibli._meta['keywords'][key]=[]
-				bibli._meta['keywords'][key].append(index)					
+				bibli._meta['keywords'][key].append(index)	
+
+
+
+
 
 
 
@@ -88,15 +122,15 @@ class bibliography(object):
 		return(selected)
 
 
-	def check_occurence_of_keyword(self,selected):
 
-		tmp=[]
+
+	def count_occurence_of_keyword(self,selected):
+		occurence=[]
 		for i in selected:
-			#print self._articles[i].keywords
-			tmp+=self._articles[i].keywords
+			occurence+=self._articles[i].keywords
 
 		freq_dict={}
-		for key in tmp:
+		for key in occurence:
 			if key not in freq_dict.keys():
 				freq_dict[key]=0
 			freq_dict[key]+=1
@@ -104,15 +138,55 @@ class bibliography(object):
 		word_count=list()
 		for key in freq_dict.keys():
 			word_count.append((key,freq_dict[key]))
-			#word_count.append((key,float(freq_dict[key])/len(tmp)))
+		return occurence,freq_dict,word_count
 
-		return word_count,tmp,freq_dict
+	def count_occurence_of_author(self,selected):
+		occurence=[]
+		for i in selected:
+			occurence+=[self._articles[i].author]
 
+		freq_dict={}
+		for key in occurence:
+			if key not in freq_dict.keys():
+				freq_dict[key]=0
+			freq_dict[key]+=1
 
+		word_count=list()
+		for key in freq_dict.keys():
+			word_count.append((key,freq_dict[key]))
+		return occurence,freq_dict,word_count
 
+	def count_occurence_of_institution(self,selected):
+		occurence=[]
+		for i in selected:
+			occurence+=[self._articles[i].institution]
 
+		freq_dict={}
+		for key in occurence:
+			if key not in freq_dict.keys():
+				freq_dict[key]=0
+			freq_dict[key]+=1
 
+		word_count=list()
+		for key in freq_dict.keys():
+			word_count.append((key,freq_dict[key]))
+		return occurence,freq_dict,word_count
 
+	def count_occurence_of_journal(self,selected):
+		occurence=[]
+		for i in selected:
+			occurence+=[self._articles[i].journal]
+
+		freq_dict={}
+		for key in occurence:
+			if key not in freq_dict.keys():
+				freq_dict[key]=0
+			freq_dict[key]+=1
+
+		word_count=list()
+		for key in freq_dict.keys():
+			word_count.append((key,freq_dict[key]))
+		return occurence,freq_dict,word_count
 
 
 

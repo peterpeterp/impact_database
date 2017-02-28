@@ -68,61 +68,77 @@ def index():
   session['thematics_chosen']   = []
   session['types_chosen']  = []
   session['unsorteds_chosen']   = []
+  session['image_type'] = 'keyword'
+  session['id']=str(int(round(time.time())))
 
   return redirect(url_for("choices"))
 
 @app.route('/choices')
 def choices():
-  print 'choices'
 
   # create a word cloud
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
-  
-  word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
 
-  form_region, form_thematic, form_type, form_unsorted, form_selected = update_keywords(freq.keys())
+  word_list,freqency,word_count=settings.bib.count_occurence_of_keyword(selected)
+
+  form_region, form_thematic, form_type, form_unsorted, form_selected = update_keywords(freqency.keys())
 
   wc = WordCloud(background_color="white", max_words=2000,
                stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
 
-  # wc.generate_from_frequencies(word_count)
-  wc.generate(' '.join(word_list))
+  print session['image_type']
+  if session['image_type']=='keyword':
+    wc.generate_from_frequencies(word_count)
+  if session['image_type']=='author':
+    ttmp,tttmp,word_count=settings.bib.count_occurence_of_author(selected)
+    wc.generate_from_frequencies(word_count)  
+  if session['image_type']=='institution':
+    ttmp,tttmp,word_count=settings.bib.count_occurence_of_institution(selected)
+    wc.generate_from_frequencies(word_count)
+  if session['image_type']=='journal':
+    ttmp,tttmp,word_count=settings.bib.count_occurence_of_journal(selected)
+    wc.generate_from_frequencies(word_count)
 
-  # fig = plt.figure(figsize=(20,10))
-  # #plt.imshow(wc.recolor(color_func= settings.image_colors))
+  fig = plt.figure(figsize=(20,10))
   plt.imshow(wc)
   plt.axis('off')
   plt.savefig('app/static/images/keywords.png')
 
   list_=[]
   for i in selected:
-    list_.append(settings.bib._articles[i])
+    if settings.bib._articles[i].title!='':
+      list_.append(settings.bib._articles[i])
 
   context = {
     'selected':list_,
     'picture_source':'static/images/keywords.png?'+str(int(round(time.time()))),
+    'bibtex_source':'../tmp/bibtex_'+session['id']+'.txt',
     'form_region':form_region, 
     'form_thematic':form_thematic,
     'form_type':form_type,
     'form_unsorted':form_unsorted,
-    'form_selected':form_selected
+    'form_selected':form_selected,
   }
 
-  return render_template('fixed_choices.html',**context)
+  return render_template('choices.html',**context)
 
-@app.route('/_add_numbers')
-def add_numbers():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    print 4
-    return jsonify(result=a + b)
-    # return redirect(url_for('choices'))
 
+@app.route('/export_bibtex',  methods=("GET", "POST", ))
+def export_bibtex():
+  print 'export'
+  selected=settings.bib.filter({'keywords':session['selected_keywords']})
+
+  list_=''
+  for i in selected:
+    if settings.bib._articles[i].title!='':
+      list_+=settings.bib._articles[i].bibtex
+      list_+='\n'
+
+
+  return render_template('bibtex_export.html',selected=list_.split('\n'))
 
 def update_keywords(remaining_keywords):
   print 'update'
-  start=time.time()
-  #session['selected_keywords']=session['regions_chosen']+session['thematics_chosen']+session['types_chosen']+session['unsorteds_chosen']
   form_selected = forms.SelectedForm(request.form)
   form_selected.selected.choices = zip(session['selected_keywords'],session['selected_keywords'])
 
@@ -156,9 +172,30 @@ def update_keywords(remaining_keywords):
       tmp.remove(unsorted)
   form_unsorted.unsorteds.choices = zip(tmp,tmp)
 
-  print time.time()-start
   return form_region, form_thematic, form_type, form_unsorted, form_selected
 
+
+
+@app.route('/keyword_image',  methods=("GET", "POST", ))
+def keyword_image():
+  session['image_type']='keyword'
+  return redirect(url_for('choices'))
+
+@app.route('/author_image',  methods=("GET", "POST", ))
+def author_image():
+  print 'author'
+  session['image_type']='author'
+  return redirect(url_for('choices'))
+
+@app.route('/institution_image',  methods=("GET", "POST", ))
+def institution_image():
+  session['image_type']='institution'
+  return redirect(url_for('choices'))
+
+@app.route('/journal_image',  methods=("GET", "POST", ))
+def journal_image():
+  session['image_type']='journal'
+  return redirect(url_for('choices'))
 
 @app.route('/add_region',  methods=('POST', ))
 def add_region():
