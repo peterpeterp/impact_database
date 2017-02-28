@@ -1,0 +1,92 @@
+{% extends "index.html" %}
+{% block content %}
+
+
+
+<!-- REGIONS -->
+
+<div class="span2.5">
+  <form method="POST" action="/add_region" id="region_id">
+  {{ form_region.hidden_tag() }}
+  {{ form_region.regions.label }} {{ form_region.regions(rows=10, size=4, onchange="change_region();") }}
+  </form>
+</div>
+
+<div class="span2.5">
+  <form method="POST" action="/add_thematic" id="thematic_id">
+  {{ form_thematic.hidden_tag() }}
+  {{ form_thematic.thematics.label }} {{ form_thematic.thematics(rows=10, size=4, onchange="change_thematic();") }}
+  </form>
+</div>
+
+<div class="span2.5">
+  <form method="POST" action="/add_type" id="type_id">
+  {{ form_type.hidden_tag() }}
+  {{ form_type.types.label }} {{ form_type.types(rows=10, size=4, onchange="change_type();") }}
+  </form>
+</div>
+
+<div class="span2.5">
+  <form method="POST" action="/add_unsorted" id="unsorted_id">
+  {{ form_unsorted.hidden_tag() }}
+  {{ form_unsorted.unsorteds.label }} {{ form_unsorted.unsorteds(rows=10, size=5, onchange="change_unsorted();") }}
+  </form>
+</div>
+
+
+<div class="span2.5">
+  <form method="POST" action="/remove_keyword" id="selected_id">
+  {{ form_selected.hidden_tag() }}
+  {{ form_selected.selected.label }} {{ form_selected.selected(rows=10, size=15 , onchange="change_selected();") }}
+  </form>
+  <form method="POST" action="/clear_all" id="clear_id">
+    <button type="submit" class="btn">Clear All</button>
+  </form>
+    <form method="POST" action="/export_bibtex"><button type="submit" class="btn btn-primary start">Export Bibtex</button></form>
+<!--     <a href={{ bibtex_source }} target="_blank">Export Bibtex</a>
+ --></div>
+
+<div class="span7">
+  <div class="span1.5"></div>
+  <div class="span1.5"><form method="POST" action="/keyword_image"><button type="submit" class="btn">Keyword</button></form></div>
+  <div class="span1.5"><form method="POST" action="/author_image"><button type="submit" class="btn">Author</button></form></div>
+  <div class="span1.5"><form method="POST" action="/institution_image"><button type="submit" class="btn">Institution</button></form></div>
+  <div class="span1.5"><form method="POST" action="/journal_image"><button type="submit" class="btn">Journal</button></form></div>
+    <IMG SRC={{ picture_source }} ALT="some asdatext" WIDTH=700 HEIGHT=300>
+</div>
+     
+
+
+
+{% for article in selected %}
+<div class="span11">
+  <div class="span5">
+    <br><b>{{ article.title }}</b>
+    <br>{{article.author}} , {{article.year}}
+    {% if article.url != '' %}
+    <br>URL: <a href={{ article.url }}>{{ article.url }}</a><br>
+    {% endif %}
+    {% if article.url == '' %}
+      <br>DOI: {{ article.doi }}<br>
+    {% endif %}
+  </div>
+  <div class="span5">
+    <br>{{ article.abstract }}
+  </div>
+</div>
+{% endfor %}
+<br>
+<br>
+<br>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
