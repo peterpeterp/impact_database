@@ -46,21 +46,3 @@ thematics=list(filter(lambda x: (x.lower() in ['climate information','impact & v
 types=list(filter(lambda x: (x.lower() in ['peer reviewed','seminal','grey literature']),keywords))
 unsorteds=list(filter(lambda x: (x.lower() not in regions+thematics+types),keywords))
 
-
-
-# selected=bib.filter({'keywords':['pacific','caribbean']})
-# word_count,list_=bib.check_occurence_of_keyword(selected)
-
-
-# wc = WordCloud(background_color="white", max_words=2000,
-#            stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
-
-# # wc.generate_from_frequencies(word_count[0:20])
-# wc.generate(' '.join(list_))
-
-
-# fig = plt.figure(figsize=(20,10))
-# #plt.imshow(wc.recolor(color_func= settings.image_colors))
-# plt.imshow(wc)
-# plt.axis('off')
-# plt.savefig('app/static/images/keywords.png')

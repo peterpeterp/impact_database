@@ -40,8 +40,6 @@ from PIL import Image
 
 stopwords = set(STOPWORDS)
 stopwords.add("said")
-world_mask=np.array(Image.open("world.png"))
-image_colors = ImageColorGenerator(world_mask)
 
 def flash_errors(form):
     for field, errors in form.errors.items():

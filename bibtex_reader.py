@@ -13,7 +13,7 @@ class bibliography(object):
 		string=string.replace('{','').replace('}','').replace(',','')
 		while string[0]==' ':string=''.join(string[1:])
 		while string[-1]==' ':string=''.join(string[0:-1])
-		return string
+		return string.encode('utf-8')
 
 	def extract_keywords(self,string):
 		string=string.replace('{','').replace('}','')
