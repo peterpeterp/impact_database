@@ -75,12 +75,13 @@ def index():
 def choices():
   print 'choices'
 
-  form_region, form_thematic, form_type, form_unsorted, form_selected = update_keywords()
-
   # create a word cloud
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
   
   word_count,word_list,freq=settings.bib.check_occurence_of_keyword(selected)
+
+  form_region, form_thematic, form_type, form_unsorted, form_selected = update_keywords(freq.keys())
+
   wc = WordCloud(background_color="white", max_words=2000,
                stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
 
@@ -118,42 +119,40 @@ def add_numbers():
     # return redirect(url_for('choices'))
 
 
-def update_keywords():
+def update_keywords(remaining_keywords):
   print 'update'
   start=time.time()
   #session['selected_keywords']=session['regions_chosen']+session['thematics_chosen']+session['types_chosen']+session['unsorteds_chosen']
   form_selected = forms.SelectedForm(request.form)
   form_selected.selected.choices = zip(session['selected_keywords'],session['selected_keywords'])
 
-  print session['selected_keywords']
   selected=settings.bib.filter({'keywords':session['selected_keywords']})
 
   form_region = forms.RegionForm(request.form)
   tmp = regions[:]
   for region in regions:
-    #print region,len(settings.bib.filter({'keywords':session['selected_keywords']+[region]}))==0,session['regions_chosen']
-    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[region]}))==0) | (region in session['selected_keywords']): 
+    if (region not in remaining_keywords) | (region in session['selected_keywords']): 
       tmp.remove(region)
   form_region.regions.choices = zip(tmp,tmp)
 
   form_thematic = forms.ThematicForm(request.form)
   tmp = thematics[:]
   for thematic in thematics:
-    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[thematic]}))==0) | (thematic in session['selected_keywords']): 
+    if (thematic not in remaining_keywords) | (thematic in session['selected_keywords']): 
       tmp.remove(thematic)
   form_thematic.thematics.choices = zip(tmp,tmp)
 
   form_type = forms.TypeForm(request.form)
   tmp = types[:]
   for type in types:
-    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[type]}))==0) | (type in session['selected_keywords']): 
+    if (type not in remaining_keywords) | (type in session['selected_keywords']): 
       tmp.remove(type)
   form_type.types.choices = zip(tmp,tmp)
 
   form_unsorted = forms.UnsortedForm(request.form)
   tmp = unsorteds[:]
   for unsorted in unsorteds:
-    if (len(settings.bib.filter({'keywords':session['selected_keywords']+[unsorted]}))==0) | (unsorted in session['selected_keywords']): 
+    if (unsorted not in remaining_keywords) | (unsorted in session['selected_keywords']): 
       tmp.remove(unsorted)
   form_unsorted.unsorteds.choices = zip(tmp,tmp)
 
@@ -164,35 +163,37 @@ def update_keywords():
 @app.route('/add_region',  methods=('POST', ))
 def add_region():
   form_region = forms.RegionForm(request.form)
-  session['selected_keywords'].append(form_region.regions.data)
+  session['selected_keywords']+=[form_region.regions.data]
   #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_thematic',  methods=('POST', ))
 def add_thematic():
   form_thematic = forms.ThematicForm(request.form)
-  session['selected_keywords'].append(form_thematic.thematics.data)
+  session['selected_keywords']+=[form_thematic.thematics.data]
   #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_type',  methods=('POST', ))
 def add_type():
   form_type = forms.TypeForm(request.form)
-  session['selected_keywords'].append(form_type.types.data)
+  session['selected_keywords']+=[form_type.types.data]
   #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/add_unsorted',  methods=('POST', ))
 def add_unsorted():
   form_unsorted = forms.UnsortedForm(request.form)
-  session['selected_keywords'].append(form_unsorted.unsorteds.data)
+  session['selected_keywords']+=[form_unsorted.unsorteds.data]
   #update_keywords()
   return redirect(url_for('choices'))
 
 @app.route('/remove_keyword',  methods=("POST", ))
 def remove_keyword():
   form_selected = forms.SelectedForm(request.form)
-  session['selected_keywords'].remove(form_selected.selected.data)
+  tmp=session['selected_keywords'][:]
+  tmp.remove(form_selected.selected.data)
+  session['selected_keywords']=tmp
   #update_keywords()
   return redirect(url_for('choices'))
 
