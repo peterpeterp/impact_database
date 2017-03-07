@@ -68,57 +68,79 @@ def index():
   session['unsorteds_chosen']   = []
   session['image_type'] = 'keyword'
   session['id']=str(int(round(time.time())))
+  session['search']=''
+  session['update']=['keywords','image']
 
   return redirect(url_for("choices"))
 
 @app.route('/choices')
 def choices():
+  if True:
+    # create a word cloud
+    selected=settings.bib.filter({'keywords':session['selected_keywords']})
+    form_selected = forms.SelectedForm(request.form)
+    form_selected.selected.choices = zip(session['selected_keywords'],session['selected_keywords'])
 
-  # create a word cloud
-  selected=settings.bib.filter({'keywords':session['selected_keywords']})
+    word_list,freqency,word_count=settings.bib.count_occurence_of_keyword(selected)
 
-  word_list,freqency,word_count=settings.bib.count_occurence_of_keyword(selected)
+    form_region, form_thematic, form_type = update_keywords(freqency.keys())
 
-  form_region, form_thematic, form_type, form_unsorted, form_selected = update_keywords(freqency.keys())
+    form_unsorted = update_unsorteds(freqency.keys())
 
-  wc = WordCloud(background_color="white", max_words=2000,
-               stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
+    if 'image' in session['update']:
+      wc = WordCloud(background_color="white", max_words=2000,
+                   stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
 
-  print session['image_type']
-  if session['image_type']=='keyword':
-    wc.generate_from_frequencies(word_count)
-  if session['image_type']=='author':
-    ttmp,tttmp,word_count=settings.bib.count_occurence_of_author(selected)
-    wc.generate_from_frequencies(word_count)  
-  if session['image_type']=='institution':
-    ttmp,tttmp,word_count=settings.bib.count_occurence_of_institution(selected)
-    wc.generate_from_frequencies(word_count)
-  if session['image_type']=='journal':
-    ttmp,tttmp,word_count=settings.bib.count_occurence_of_journal(selected)
-    wc.generate_from_frequencies(word_count)
+      if session['image_type']=='keyword':
+        wc.generate_from_frequencies(word_count)
+      if session['image_type']=='author':
+        ttmp,tttmp,word_count=settings.bib.count_occurence_of_author(selected)
+        wc.generate_from_frequencies(word_count)  
+      if session['image_type']=='institution':
+        ttmp,tttmp,word_count=settings.bib.count_occurence_of_institution(selected)
+        wc.generate_from_frequencies(word_count)
+      if session['image_type']=='journal':
+        ttmp,tttmp,word_count=settings.bib.count_occurence_of_journal(selected)
+        wc.generate_from_frequencies(word_count)
 
-  fig = plt.figure(figsize=(20,10))
-  plt.imshow(wc)
-  plt.axis('off')
-  plt.savefig('app/static/images/keywords.png')
+      fig = plt.figure(figsize=(20,10))
+      plt.imshow(wc)
+      plt.axis('off')
+      plt.savefig('app/static/images/keywords.png')
 
-  list_=[]
-  for i in selected:
-    if settings.bib._articles[i].title!='':
-      list_.append(settings.bib._articles[i])
+    list_=[]
+    for i in selected:
+      if settings.bib._articles[i].title!='':
+        list_.append(settings.bib._articles[i])
 
-  context = {
-    'selected':list_,
-    'picture_source':'static/images/keywords.png?'+str(int(round(time.time()))),
-    'bibtex_source':'../tmp/bibtex_'+session['id']+'.txt',
-    'form_region':form_region, 
-    'form_thematic':form_thematic,
-    'form_type':form_type,
-    'form_unsorted':form_unsorted,
-    'form_selected':form_selected,
-  }
+    form_search=forms.SearchForm(request.form)
+    form_search.search.data=session['search']
 
-  return render_template('choices.html',**context)
+    context = {
+      'selected':list_,
+      'picture_source':'static/images/keywords.png?'+str(int(round(time.time()))),
+      'bibtex_source':'../tmp/bibtex_'+session['id']+'.txt',
+      'form_region':form_region, 
+      'form_thematic':form_thematic,
+      'form_type':form_type,
+      'form_search':form_search,
+      'form_unsorted':form_unsorted,
+      'form_selected':form_selected,
+    }
+
+    session['update']=['keywords','image']
+
+    return render_template('choices.html',**context)
+
+  # except:
+  #  return redirect(url_for("index"))
+
+@app.route('/autocomplete', methods=['GET','POST'])
+def autocomplete():
+    form_search=forms.SearchForm(request.form)
+    session['search'] = form_search.search.data
+    session['update']=[]
+    return redirect(url_for('choices'))
 
 
 @app.route('/export_bibtex',  methods=("GET", "POST", ))
@@ -135,13 +157,18 @@ def export_bibtex():
 
   return render_template('bibtex_export.html',selected=list_.split('\n'))
 
+def update_unsorteds(remaining_keywords):
+  form_unsorted = forms.UnsortedForm(request.form)
+  tmp = unsorteds[:]
+  for unsorted in unsorteds:
+    if (unsorted not in remaining_keywords) | (unsorted in session['selected_keywords']) | (unsorted[:len(session['search'])]!=session['search']): 
+      tmp.remove(unsorted)
+  form_unsorted.unsorteds.choices = zip(tmp,tmp)
+
+  return form_unsorted
+
 def update_keywords(remaining_keywords):
   print 'update'
-  form_selected = forms.SelectedForm(request.form)
-  form_selected.selected.choices = zip(session['selected_keywords'],session['selected_keywords'])
-
-  selected=settings.bib.filter({'keywords':session['selected_keywords']})
-
   form_region = forms.RegionForm(request.form)
   tmp = regions[:]
   for region in regions:
@@ -163,16 +190,7 @@ def update_keywords(remaining_keywords):
       tmp.remove(type)
   form_type.types.choices = zip(tmp,tmp)
 
-  form_unsorted = forms.UnsortedForm(request.form)
-  tmp = unsorteds[:]
-  for unsorted in unsorteds:
-    if (unsorted not in remaining_keywords) | (unsorted in session['selected_keywords']): 
-      tmp.remove(unsorted)
-  form_unsorted.unsorteds.choices = zip(tmp,tmp)
-
-  return form_region, form_thematic, form_type, form_unsorted, form_selected
-
-
+  return form_region, form_thematic, form_type
 
 @app.route('/keyword_image',  methods=("GET", "POST", ))
 def keyword_image():

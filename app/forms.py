@@ -17,7 +17,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
-from wtforms import RadioField, SelectMultipleField, TextField, IntegerField, SelectField
+from wtforms import RadioField, SelectMultipleField, TextField, IntegerField, SelectField, StringField
 from flask.ext.wtf import Form, validators
 from wtforms.validators import ValidationError, Required, Regexp
 
@@ -35,8 +35,11 @@ class TypeForm(Form):
   types = SelectField(u'Type of Study', choices=[],
             validators=[Required("Please select at least one Type of Study.")])
 
+class SearchForm(Form):
+  search = StringField(u'asdasd')
+
 class UnsortedForm(Form):
-  unsorteds = SelectField(u'Available Keywords', choices=[],
+  unsorteds = SelectField(u'', choices=[],
             validators=[Required("Please select at least one unsorted.")])
 
 class SelectedForm(Form):

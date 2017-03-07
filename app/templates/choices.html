@@ -5,6 +5,8 @@
 
 <!-- REGIONS -->
 
+
+
 <div class="span2.5">
   <form method="POST" action="/add_region" id="region_id">
   {{ form_region.hidden_tag() }}
@@ -27,12 +29,22 @@
 </div>
 
 <div class="span2.5">
+  <form method="POST" action="/autocomplete" id="autocomplete">
+  Filter Remaining Keywords: <div>{{ form_search.search(size=3, type="text", onchange="change_form();") }}</div>
+  </form>
   <form method="POST" action="/add_unsorted" id="unsorted_id">
-  {{ form_unsorted.hidden_tag() }}
   {{ form_unsorted.unsorteds.label }} {{ form_unsorted.unsorteds(rows=10, size=5, onchange="change_unsorted();") }}
   </form>
 </div>
 
+<div class="span7">
+  <div class="span1.5"></div>
+  <div class="span1.5"><form method="POST" action="/keyword_image"><button type="submit" class="btn">Keyword</button></form></div>
+  <div class="span1.5"><form method="POST" action="/author_image"><button type="submit" class="btn">Author</button></form></div>
+  <div class="span1.5"><form method="POST" action="/institution_image"><button type="submit" class="btn">Institution</button></form></div>
+  <div class="span1.5"><form method="POST" action="/journal_image"><button type="submit" class="btn">Journal</button></form></div>
+    <IMG SRC={{ picture_source }} ALT="some asdatext" WIDTH=700 HEIGHT=300>
+</div>
 
 <div class="span2.5">
   <form method="POST" action="/remove_keyword" id="selected_id">
@@ -46,14 +58,7 @@
 <!--     <a href={{ bibtex_source }} target="_blank">Export Bibtex</a>
  --></div>
 
-<div class="span7">
-  <div class="span1.5"></div>
-  <div class="span1.5"><form method="POST" action="/keyword_image"><button type="submit" class="btn">Keyword</button></form></div>
-  <div class="span1.5"><form method="POST" action="/author_image"><button type="submit" class="btn">Author</button></form></div>
-  <div class="span1.5"><form method="POST" action="/institution_image"><button type="submit" class="btn">Institution</button></form></div>
-  <div class="span1.5"><form method="POST" action="/journal_image"><button type="submit" class="btn">Journal</button></form></div>
-    <IMG SRC={{ picture_source }} ALT="some asdatext" WIDTH=700 HEIGHT=300>
-</div>
+
      
 
 
