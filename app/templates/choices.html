@@ -10,21 +10,21 @@
 <div class="span2.5">
   <form method="POST" action="/add_region" id="region_id">
   {{ form_region.hidden_tag() }}
-  {{ form_region.regions.label }} {{ form_region.regions(rows=10, size=4, onchange="change_region();") }}
+  {{ form_region.regions.label }} {{ form_region.regions(rows=10, size=7, onchange="change_region();") }}
   </form>
 </div>
 
 <div class="span2.5">
   <form method="POST" action="/add_thematic" id="thematic_id">
   {{ form_thematic.hidden_tag() }}
-  {{ form_thematic.thematics.label }} {{ form_thematic.thematics(rows=10, size=4, onchange="change_thematic();") }}
+  {{ form_thematic.thematics.label }} {{ form_thematic.thematics(rows=10, size=7, onchange="change_thematic();") }}
   </form>
 </div>
 
 <div class="span2.5">
   <form method="POST" action="/add_type" id="type_id">
   {{ form_type.hidden_tag() }}
-  {{ form_type.types.label }} {{ form_type.types(rows=10, size=4, onchange="change_type();") }}
+  {{ form_type.types.label }} {{ form_type.types(rows=10, size=7, onchange="change_type();") }}
   </form>
 </div>
 
