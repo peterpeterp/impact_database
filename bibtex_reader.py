@@ -10,7 +10,7 @@ class bibliography(object):
 		self._meta={'author':{},'year':{},'title':{},'publisher':{},'keywords':{}}
 
 	def clean(self,string):
-		string=string.replace('{','').replace('}','').replace(',','')
+		string=string.replace('{','').replace('}','').replace(',','').replace('\t','')
 		while string[0]==' ':string=''.join(string[1:])
 		while string[-1]==' ':string=''.join(string[0:-1])
 		return string.encode('utf-8')
@@ -40,27 +40,27 @@ class bibliography(object):
 			SELF.keywords=[]
 			for line in bibtex.split('\n'):
 				if len(line.split('='))>1:
-					if bibli.clean(line.split('=')[0])=='doi': 
+					if bibli.clean(line.split('=')[0]).lower()=='doi': 
 						doi=bibli.clean(line.split('=')[1])
 						SELF.doi=doi
 
-					if bibli.clean(line.split('=')[0])=='url': 
+					if bibli.clean(line.split('=')[0]).lower()=='url': 
 						url=bibli.clean(line.split('=')[1])
 						SELF.url=url
 
-					if bibli.clean(line.split('=')[0])=='abstract': 
+					if bibli.clean(line.split('=')[0]).lower()=='abstract': 
 						abstract=bibli.clean(line.split('=')[1])
 						SELF.abstract=abstract
 
-					if bibli.clean(line.split('=')[0])=='institution': 
+					if bibli.clean(line.split('=')[0]).lower()=='institution': 
 						institution=bibli.clean(line.split('=')[1])
 						SELF.institution=institution
 
-					if bibli.clean(line.split('=')[0])=='journal': 
+					if bibli.clean(line.split('=')[0]).lower()=='journal': 
 						journal=bibli.clean(line.split('=')[1])
 						SELF.journal=journal
 
-					if bibli.clean(line.split('=')[0])=='author': 
+					if bibli.clean(line.split('=')[0]).lower()=='author': 
 						author_list=bibli.clean(line.split('=')[1]).split(' and')
 						if len(author_list)>1: author=author_list[0]+' et al.'
 						if len(author_list)==1: author=author_list[0]
@@ -68,26 +68,26 @@ class bibliography(object):
 						if author not in bibli._meta['author']:bibli._meta['author'][author]=[]
 						bibli._meta['author'][author].append(index)
 
-					if bibli.clean(line.split('=')[0])=='title': 
+					if bibli.clean(line.split('=')[0]).lower()=='title': 
 						title=bibli.clean(line.split('=')[1])
 						SELF.title=title
 						if title not in bibli._meta['title']:bibli._meta['title'][title]=[]
 						bibli._meta['title'][title].append(index)
 
-					if bibli.clean(line.split('=')[0])=='year': 
+					if bibli.clean(line.split('=')[0]).lower()=='year': 
 						year=bibli.clean(line.split('=')[1])
 						SELF.year=year
 						if year not in bibli._meta['year']:bibli._meta['year'][year]=[]
 						bibli._meta['year'][year].append(index)
 
-					if bibli.clean(line.split('=')[0])=='publisher': 
+					if bibli.clean(line.split('=')[0]).lower()=='publisher': 
 						publisher=bibli.clean(line.split('=')[1])
 						SELF.publisher=publisher
 						if publisher not in bibli._meta['publisher']:bibli._meta['publisher'][publisher]=[]
 						bibli._meta['publisher'][publisher].append(index)
 
 
-					if bibli.clean(line.split('=')[0])=='keywords': 
+					if bibli.clean(line.split('=')[0]).lower()=='keywords': 
 						keywords=bibli.extract_keywords(line.split('=')[1])
 						SELF.keywords=keywords
 

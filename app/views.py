@@ -68,13 +68,15 @@ def index():
   session['unsorteds_chosen']   = []
   session['image_type'] = 'keyword'
   session['id']=str(int(round(time.time())))
+  session['search']=''
   session['update']=['keywords','image']
+
 
   return redirect(url_for("choices"))
 
 @app.route('/choices')
 def choices():
-  if True:
+  try:
     # create a word cloud
     selected=settings.bib.filter({'keywords':session['selected_keywords']})
     form_selected = forms.SelectedForm(request.form)
@@ -86,10 +88,11 @@ def choices():
 
     form_unsorted = update_unsorteds(freqency.keys())
 
+
+
     if 'image' in session['update']:
       wc = WordCloud(background_color="white", max_words=2000,
-                   stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
-
+                 stopwords=stopwords, max_font_size=40, random_state=42)#,mask=settings.world_mask
       if session['image_type']=='keyword':
         wc.generate_from_frequencies(word_count)
       if session['image_type']=='author':
@@ -131,9 +134,16 @@ def choices():
 
     return render_template('choices.html',**context)
 
-  # except:
-  #  return redirect(url_for("index"))
+  except:
+   return redirect(url_for("index"))
 
+
+@app.route('/autocomplete', methods=['GET','POST'])
+def autocomplete():
+    form_search=forms.SearchForm(request.form)
+    session['search'] = form_search.search.data
+    session['update']=[]
+    return redirect(url_for('choices'))
 
 @app.route('/export_bibtex',  methods=("GET", "POST", ))
 def export_bibtex():
