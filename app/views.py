@@ -68,14 +68,13 @@ def index():
   session['unsorteds_chosen']   = []
   session['image_type'] = 'keyword'
   session['id']=str(int(round(time.time())))
-  session['search']=''
   session['update']=['keywords','image']
 
   return redirect(url_for("choices"))
 
 @app.route('/choices')
 def choices():
-  if True:
+  try:
     # create a word cloud
     selected=settings.bib.filter({'keywords':session['selected_keywords']})
     form_selected = forms.SelectedForm(request.form)
@@ -132,15 +131,8 @@ def choices():
 
     return render_template('choices.html',**context)
 
-  # except:
-  #  return redirect(url_for("index"))
-
-@app.route('/autocomplete', methods=['GET','POST'])
-def autocomplete():
-    form_search=forms.SearchForm(request.form)
-    session['search'] = form_search.search.data
-    session['update']=[]
-    return redirect(url_for('choices'))
+  except:
+   return redirect(url_for("index"))
 
 
 @app.route('/export_bibtex',  methods=("GET", "POST", ))

@@ -35,9 +35,6 @@ class TypeForm(Form):
   types = SelectField(u'Type of Study', choices=[],
             validators=[Required("Please select at least one Type of Study.")])
 
-class SearchForm(Form):
-  search = StringField(u'asdasd')
-
 class UnsortedForm(Form):
   unsorteds = SelectField(u'', choices=[],
             validators=[Required("Please select at least one unsorted.")])
