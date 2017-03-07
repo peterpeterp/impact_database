@@ -34,7 +34,7 @@ except ImportError:
         "cannot find bibtex_reader code")
 
 
-bibtex=open('database.bib','r').read().split('@')
+bibtex=open('impact_reference_v1.1.bib','r').read().split('@')
 
 bib=bibtex_reader.bibliography()
 for entry in bibtex:
