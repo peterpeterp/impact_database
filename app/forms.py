@@ -32,7 +32,7 @@ class ThematicForm(Form):
             validators=[Required("Please select at least one Thematic.")])
 
 class TypeForm(Form):
-  types = SelectField(u'Type of Study', choices=[],
+  types = SelectField(u'Type of Sector', choices=[],
             validators=[Required("Please select at least one Type of Study.")])
 
 class SearchForm(Form):

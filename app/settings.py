@@ -42,7 +42,7 @@ for entry in bibtex:
 
 keywords=bib._meta['keywords'].keys()
 regions=list(filter(lambda x: (x.lower() in ['west africa','caribbean','pacific']),keywords))
-thematics=list(filter(lambda x: (x.lower() in ['climate information','impact & vulnerability of natural resources','impact & vulnerability of socio-economic systems at regional, national and sub-national scale','impact & vulnerability of livelihoods at community and household level','adaptation']),keywords))
-types=list(filter(lambda x: (x.lower() in ['peer reviewed','seminal','grey literature']),keywords))
+thematics=list(filter(lambda x: (x.lower() in ['climate information','adaptation','natural vulnerability','social vulnerability','livelihood vulnerability']),keywords))
+types=list(filter(lambda x: (x.lower() in ['agriculture','forest ecosystems','coastal systems','marine ecosystems','water resources','health and human well being','tourism','energy','transport and infrastructure','non economic impacts']),keywords))
 unsorteds=list(filter(lambda x: (x.lower() not in regions+thematics+types),keywords))
 
