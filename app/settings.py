@@ -33,6 +33,7 @@ except ImportError:
     raise ImportError(
         "cannot find bibtex_reader code")
 
+print 'reload settings'
 
 bibtex=open('database.bib','r').read().split('@')
 
@@ -46,3 +47,4 @@ thematics=list(filter(lambda x: (x.lower() in ['climate information','adaptation
 types=list(filter(lambda x: (x.lower() in ['agriculture','forest ecosystems','coastal systems','marine ecosystems','water resources','health and human well being','tourism','energy','transport and infrastructure','non economic impacts']),keywords))
 unsorteds=list(filter(lambda x: (x.lower() not in regions+thematics+types),keywords))
 
+print regions

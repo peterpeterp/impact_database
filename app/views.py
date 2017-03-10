@@ -135,7 +135,7 @@ def choices():
     return render_template('choices.html',**context)
 
   except:
-   return redirect(url_for("index"))
+   return redirect(url_for("choices"))
 
 
 @app.route('/update_database',  methods=("GET", "POST", ))
@@ -149,6 +149,16 @@ def update_database():
   types  = sorted([x.lower() for x in settings.types])
   unsorteds  = sorted([x.lower() for x in settings.unsorteds])
 
+  session['regions_chosen']   = []
+  session['selected_keywords']= []
+  session['regions_chosen']   = []
+  session['thematics_chosen']   = []
+  session['types_chosen']  = []
+  session['unsorteds_chosen']   = []
+  session['image_type'] = 'keyword'
+  session['id']=str(int(round(time.time())))
+  session['search']=''
+  session['update']=['keywords','image']
 
   return redirect(url_for("index"))
 
