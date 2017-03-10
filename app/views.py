@@ -138,6 +138,20 @@ def choices():
    return redirect(url_for("index"))
 
 
+@app.route('/update_database',  methods=("GET", "POST", ))
+def update_database():
+
+  import settings as settings ; reload(settings)
+
+  keywords = sorted([x.lower() for x in settings.keywords])
+  regions = sorted([x.lower() for x in settings.regions])
+  thematics = sorted([x.lower() for x in settings.thematics])
+  types  = sorted([x.lower() for x in settings.types])
+  unsorteds  = sorted([x.lower() for x in settings.unsorteds])
+
+
+  return redirect(url_for("index"))
+
 @app.route('/autocomplete', methods=['GET','POST'])
 def autocomplete():
     form_search=forms.SearchForm(request.form)
