@@ -88,6 +88,8 @@ def choices():
 
     form_unsorted = update_unsorteds(freqency.keys())
 
+    print freqency
+    print word_count
 
 
     if 'image' in session['update']:
